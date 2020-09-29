@@ -1,0 +1,35 @@
+{
+  "name": "fiat-visualization",
+  "version": "0.9.0",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-spread": "^7.11.0",
+    "@babel/preset-env": "^7.11.5",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "common-tags": "^1.8.0",
+    "cookies-eu-banner": "^2.0.1",
+    "core-js": "^3.6.5",
+    "d3": "^6.1.1",
+    "d3fc-discontinuous-scale": "^2.0.5",
+    "flubber": "^0.4.2",
+    "lodash": "^4.17.20",
+    "node-sass": "^4.14.1",
+    "rollup": "^2.3.4",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-svelte": "^5.0.3",
+    "rollup-plugin-terser": "^7.0.0",
+    "svelte": "^3.0.0",
+    "topojson": "^3.0.2"
+  },
+  "dependencies": {
+    "sirv-cli": "^1.0.0"
+  }
+}

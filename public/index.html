@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Atlantic Council's Digital Forensic Research Lab" />
+
+    <title>Interference 2020</title>
+
+    <link rel="canonical" href="https://interference2020.org" />
+    <meta name="description" content="The DFRLab's Foreign Interference Attribution Tracker (FIAT) is an interactive, open-source database that captures allegations of foreign interference relevant to the 2020 election.">
+    <meta name="keywords" content="interference, elections 2020, U.S. elections, disinformation, democracy, interference attributions, platforms, methods, sources, visualization">
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="images/meta/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/meta/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/meta/favicon-16x16.png">
+    <link rel="manifest" href="images/meta/site.webmanifest">
+    <link rel="mask-icon" href="images/meta/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="images/meta/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="images/meta/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+  
+    <meta property="og:title" content="Interference 2020">
+    <meta property="og:site_name" content="Foreign Interference Attribution Tracker">
+    <meta property="og:url" content="https://interference2020.com/">
+    <meta property="og:description" content="The Foreign Interference Attribution Tracker (FIAT) is an open-source database capturing allegations of foreign interference in U.S. elections and political processes.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="images/screenshots/fiat_image.jpg"/>
+    <meta property="og:image:secure_url" content="images/screenshots/fiat_image.jpg"/>
+  
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="build/bundle.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <script defer src="build/bundle.js"></script>
+  </head>
+
+  <body>
+    <div class="page-wrapper" id="top">
+      <div class="fiat-title-bg">
+        <img src="images/logos/fiat_blurry.png" alt="The FIAT emblem showing blurred circles" />
+      </div>
+      <section class="content title">
+        <div class="logos">
+          <a href="https://www.atlanticcouncil.org"><img src="images/logos/ac.svg" alt="Atlantic Council Logo" /></a>
+          <a class="smaller" href="https://www.atlanticcouncil.org/programs/digital-forensic-research-lab/"><img src="images/logos/dfrlab.svg" alt="Digital Forensic Research Lab Logo" /></a>
+        </div>
+        <h1>Interference 2020</h1>
+        <h2>Foreign Interference Attribution Tracker <span class="info-card">beta</span></h2>
+        <div class="separator thicker"></div>
+        <p class="center"><em>A Project of the Digital Forensic Research Lab (DFRLab) of the Atlantic Council</em></p>
+      </section>
+      <section class="content overview no-lower-margin">
+        <p>
+          The DFRLab's Foreign Interference Attribution Tracker (FIAT) is an interactive, open-source database that captures allegations of foreign interference relevant to the 2020 election. This tool assesses the credibility, bias, evidence, transparency, and impact of each claim. Explore by scrolling through the timeline and map below. Hover over a circle to see details about a particular case.
+        </p>
+      </section>
+      <div id="svelte-target"></div>
+      <section id="medthodology" class="content">
+        <div class="separator"></div>
+        <input id="collapsible-methodology" class="toggle" type="checkbox">
+        <label for="collapsible-methodology" class="lbl-toggle">Methodology</label>
+        <div class="collapsible-content">
+          <h4 id="case-selection">Case Selection</h4>
+          <p>
+            In order to be included, cases must fulfill three criteria. 
+          </p>
+          <p>
+            First, cases must involve allegations of <em>foreign interference</em> by primarily digital means. The Australian Government Department of Home Affairs <a href="https://www.homeaffairs.gov.au/about-us/our-portfolios/national-security/countering-foreign-interference" target="_blank">defines</a> foreign interference as activity by a foreign actor that is "coercive, corrupting, deceptive, or clandestine" in nature, distinguishing it from the more benign phenomenon of <em>foreign influence</em>. By focusing expressly on digital activity, this definition denotes a range of interference activities—including disinformation, media manipulation, and cyber intrusion—that are conducted by foreign actors to affect political outcomes. 
+          </p>
+          <p>
+            Second, cases must be <em>novel</em>. A novel case is one which involves a fresh foreign interference claim or which reveals new evidence to reinvigorate an old one. A novel case is also one in which significant newsworthiness is attached to the individual or organization making the claim. In general, a president or ex-president’s claim is novel regardless of the evidence presented. Meanwhile, an op-ed or report by a mid-level U.S. official is only novel if it contains previously undisclosed information.  
+          </p>
+          <p>
+            Third and finally, cases must be <em>relevant to the 2020 U.S. election</em>. This focuses case selection on alleged foreign interference that seems intended to influence voting behaviors, denigrate particular candidates, or engage in political or social issues of direct relevance to the election. It also bounds case selection to foreign interference claims that have occurred around or following the 2018 U.S. midterm elections.
+          </p>
+          <h4 id="attribution-impact">Attribution Impact</h4>
+          <p>
+            Attribution Impact measures the spread of case-related articles and content over the seven days following a foreign interference allegation. It is a sum of the cumulative Facebook engagements, Twitter shares, and Reddit engagements of relevant articles, intended to capture the digital impact of a given case. It is best used as a comparative, rather than absolute, measure.
+          </p>
+          <p>
+            This sum is computed by a standardized query process that utilizes <a href="https://serpapi.com/" target="_blank">SerpApi</a> (which enables "Google dorks" using advanced Google search operators), <a href="https://buzzsumo.com/" target="_blank">BuzzSumo</a> (which enables the query of a large database of social media content and collection of engagement data), and <a href="https://www.crowdtangle.com/" target="_blank">CrowdTangle</a> (which enables the collection of engagement data for content not indexed by BuzzSumo). 
+          </p>
+          <p>
+            The following steps are followed in order to determine the Attribution Impact. This process is automated by Python and run by means of a Google Collab notebook:
+          </p>
+          <ol>
+            <li>
+              A case's Link of Attribution is used by BuzzSumo to compute a list of backlinks, which includes social media engagement data.
+            </li>
+            <li>
+              To account for content not indexed by BuzzSumo, SerpAPI is used. The Google dork is standardized by way of several variables: Source, Disinformation, Disinformant Nation, and Date of Attribution. The standard Google dork is “intext:Source AND Disinformant AND Disinformant Nation.” (In some cases, alternate names are substituted. These substitutions are documented in the raw dataset.) The resulting Google dork is reviewed by coders and irrelevant results are deleted. 
+            </li>
+            <li>
+              The edited Google dork is automatically reconciled with the list of BuzzSumo backlinks.
+            </li>
+            <li>
+              An additional BuzzSumo search is performed on remaining web links, importing social media engagement data where matches are found.
+            </li>
+            <li>
+              Where matches are not found, web links are visited manually and their social media engagement data is recorded via the CrowdTangle link checker extension for Google Chrome.
+            </li>
+            <li>
+              Social media engagement data is tallied from these three sources—BuzzSumo backlinks, the BuzzSumo search of web links, and manual CrowdTangle input—to arrive at the final Attribution Impact.
+            </li>
+          </ol>
+          <p>
+            The fixed timeframe, standardized Google dork formula, and opacity of the tools themselves means that relevant social media engagement data may be excluded. Therefore, the Attribution Impact should be treated as a rough estimate, most useful for comparing between cases.
+          </p>
+          <p>
+            It is the intention of the FIAT team to introduce additional dimensions of Attribution Impact as the tool evolves.
+          </p>
+          <h4 id="attribution-score">Attribution Score</h4>
+          <p>
+            The Attribution Score is a framework of eighteen binary statements (true or false) that assess foreign interference claims made by governments, technology companies, the media, and civil society organizations. The measure is intended to capture the reliability of the attribution as discernible through public sources rather than to serve as a fact-check of the attribution itself. If a statement is deemed applicable, a point is awarded. If a statement is deemed inapplicable or irrelevant, no point is awarded. Initial coding was reviewed by the FIAT research team and shaped by iterative discussion.
+          </p>
+          <p>
+            This scoring system is based on the experience of DFRLab experts in assessing—and making—such allegations. It is also based on a review of work produced by the wider disinformation studies community, and particularly resources compiled by <a href="https://attribution.news/" target="_blank">attribution.news</a>.
+          </p>
+          <p>
+            The Attribution Score is composed of four subsections: 
+          </p>
+          <h5>Credibility</h5>
+          <ul>
+            <li>The source of the attribution does not have a direct financial interest in a certain attribution outcome.</li>
+            <li>The source of the attribution has a diversified and transparent funding stream.</li>
+            <li>The source of the attribution does not strongly endorse a specific political ideology.</li>
+            <li>The source of the attribution is in no way affiliated with a political campaign.</li>
+            <li>The source of the attribution has not previously promoted mis- or disinformation.</li>
+          </ul>
+          <h5>Objectivity</h5>
+          <ul>
+            <li>The attribution avoids using biased wording. The attribution avoids high-inference or emotive language.</li>
+            <li>The headline accurately conveys the content of the attribution.</li>
+            <li>The attribution clearly distinguishes factual information from argumentative analysis.</li>
+          </ul>
+          <h5>Evidence</h5>
+          <ul>
+            <li>The attribution provides a clear illustration of the methods, tactics, and platforms involved in the alleged information operation.</li>
+            <li>The attribution contextualizes the engagement with, and impact of, the alleged information operation.</li>
+            <li>The attribution identifies actors and states allegedly responsible.</li>
+            <li>The attribution clearly explains the strategic goal and rationale of the actors who conducted the alleged information operation.</li>
+            <li>The attribution relies on information which is unique to, or can only be procured by, the relevant actor. (e.g. classified information for U.S. federal agencies, back-end/developer information for technology companies)</li>
+          </ul>
+          <h5>Transparency</h5>
+          <ul>
+            <li>The attribution provides open access to a dataset or archived links of alleged assets.</li>
+            <li>The attribution methodology is clearly explained.</li>
+            <li>The attribution is replicable through open-source evidence.</li>
+            <li>The attribution acknowledges relevant limitations or mitigating factors in its assessment.</li>
+            <li>The attribution has been corroborated by a third party or independent investigation.</li>
+          </ul>
+          <p>
+            An attribution that scores fifteen points or higher is especially reliable. An attribution that scores six points or fewer should be carefully scrutinized.
+          </p>
+        </div>
+      </section>
+      <section class="content codebook">
+        <input id="collapsible-codebook" class="toggle" type="checkbox">
+        <label for="collapsible-codebook" class="lbl-toggle">Terminology & Codebook</label>
+        <div class="collapsible-content">
+          <p>
+            Allegations of foreign interference in U.S. elections that met the <span class="pseudolink" onclick="window.scrollsmooth('case-selection', 'collapsible-methodology');">case selection</span> criteria were recorded by DFRLab coders using a codebook of variables. Five text variables, 36 binary variable options, and 5 other variables were used to describe who made the allegation of interference against who, what the attribution was, when it occurred, the platforms where it occurred, and how the interference was conducted. New binary variables for platforms and methods were added based on case review. 
+          </p>
+          <p>
+            Additional variables were used to measure the impact of the allegation on online media discourse, and to assess the credibility, bias, evidence, and transparency of allegations. 
+          </p>
+          <h5 id="source">Who is making the attribution, against whom?</h5>
+          <ul>
+            <li><strong>Source of Allegation</strong> (free text). The original source of the interference allegation.</li>
+            <li>
+              <strong>Source Nation</strong> (country). The country where the source of the interference allegation originates. Since the scope of this dataset is interference in the U.S., the most common source nation for allegations is the United States. The source nation does not necessarily denote the actor was associated with a national government.
+            </li>
+            <li>
+              <strong>Source Category</strong> (binary, select all that apply).
+              <ul class="inner">
+                <li><strong>Civil Society Organization.</strong> A nonprofit, non-governmental, non-media entity, typically a university or think tank.</li>
+                <li><strong>Foreign Government Body.</strong> A non-U.S. government entity.</li>
+                <li><strong>Government.</strong> Government agencies, elected representatives, and officials, even if quoted anonymously.</li>
+                <li><strong>Influential Individual.</strong> A noteworthy individual, not currently affiliated with another category, who is deemed nationally recognizable or operating in the public sphere.</li>
+                <li><strong>Media.</strong> Only applies if a news organization makes the allegation on the basis of its own investigation. A media organization reporting on an allegation made by someone else (e.g. an anonymous government official) is not included.</li>
+                <li><strong>Private Consultancy.</strong> A company engaged in private monitoring and risk consulting, typically in the field of cybersecurity.</li>
+                <li><strong>Technology Company.</strong> A company that operates a social media platform or offers a technology service.</li>
+              </ul>
+            </li>
+            <li><strong>Disinformant</strong> (free text). Brief description of the actor purportedly responsible for the interference attempt.</li>
+            <li><strong>Disinformant Nation</strong> (free text). The country where the interference originates, according to the source. When an allegation comes from a non-state political actor, this field is the nation of origin of that non-state political actor. This does not necessarily denote an actor is associated with the national government.</li>
+            <li>
+              <strong>Attribution Type</strong> (binary, select all that apply).
+              <ul class="inner">
+                <li><strong>Direct Attribution.</strong> The source directly accuses the disinformant of malicious political behavior.</li>
+                <li><strong>Proxy/Inferred Attribution.</strong> The source does not make a direct attribution, but clearly states that the activity is likely associated with the disinformant or strongly implies the accusation is directed at the disinformant.</li>
+                <li><strong>Non-Aligned Commercial Activity.</strong> The interference consists of malicious commercial activity rather than a politically motivated information operation.</li>
+              </ul>
+            </li>
+          </ul>
+          <h5 id="description-link">What was the attribution?</h5>
+          <ul>
+            <li><strong>Short title</strong> (free text).</li>
+            <li><strong>Short description</strong> (free text). One to three sentence description of the allegation, alleged activity, and attribution.</li>
+            <li><strong>Link to attribution</strong> (link).</li>
+          </ul>
+          <h5 id="activity-attribution-date">When did the interference and attribution occur?</h5>
+          <ul>
+            <li>
+              <strong>Date(s) of Activity.</strong> Date or range of purported activity..
+              <ul class="inner">
+                <li><strong>Start</strong> (date). Input if start date is known; if not, omit.</li>
+                <li><strong>End</strong> (date). Input if end date is known, if not, omit.</li>
+              </ul>
+            </li>
+            <li><strong>Date of Attribution</strong> (date). Date corresponds to date of link of attribution. Particular attention should be given to this date by coders because it is used to determine the time span for collecting Attribution Impact metrics.</li>
+          </ul>
+          <h5 id="platform">On what platforms did the interference purportedly take place?</h5>
+          <ul>
+            <li>
+              <strong>Open Web</strong> (binary, select all that apply).
+              <ul class="inner">
+                <li><strong>State Media.</strong> A media outlet controlled by a government or government proxy, which is not editorially independent.</li>
+                <li><strong>Independent Media.</strong> Media outlets that are generally regarded as reputable, balanced, and independent of direct government control.</li>
+                <li><strong>"Junk News" Media.</strong> Unreliable, skewed, openly propagandistic, or fringe media outlets that lack discernable government ties.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Social Media Platform</strong> (binary, select all that apply). Platform(s) on which alleged interference occurred.
+              <ul class="inner">
+                <li><strong>Facebook</strong></li>
+                <li><strong>Instagram</strong></li>
+                <li><strong>Twitter</strong></li>
+                <li><strong>YouTube</strong></li>
+                <li><strong>LinkedIn</strong></li>
+                <li><strong>Reddit</strong></li>
+                <li><strong>VK</strong></li>
+                <li><strong>Forum Board</strong> (binary)</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Messaging Platforms.</strong> (binary, select all that apply). Platform(s) on which alleged interference occurred.
+              <ul class="inner">
+                <li><strong>WhatsApp</strong></li>
+                <li><strong>Telegram</strong></li>
+                <li><strong>Signal</strong></li>
+                <li><strong>WeChat</strong></li>
+                <li><strong>SMS</strong></li>
+              </ul>
+            </li>
+            <li><strong>Advertisement</strong> (binary).</li>
+            <li><strong>Email</strong> (binary).</li>
+          </ul>
+          <h5 id="method">How was the interference purportedly conducted?</h5>
+          <ul>
+            <li>
+              <strong>Method.</strong> Methods used in both the creation and the amplification of content related to the alleged foreign interference (binary, select all that apply).
+              <ul class="inner">
+                <li><strong>Brigading.</strong> Authentic social media accounts but evidence of coordinated amplification or harassment.</li>
+                <li><strong>Sockpuppets.</strong> Inauthentic social media accounts; evidence suggests a high likelihood of human operation.</li>
+                <li><strong>Botnets.</strong> Inauthentic social media accounts; evidence suggests a high likelihood of automation.</li>
+                <li><strong>Search Engine Manipulation.</strong> Manipulation of search queries and results; typosquatting.</li>
+                <li><strong>Hacking - DDoS.</strong> Distributed denial-of-service attack; malicious attempt to disrupt server traffic.</li>
+                <li><strong>Hacking - Data Exfiltration.</strong> Unauthorized movement of data; spearphishing; hack-and-release.</li>
+                <li><strong>Deceptive Content Manipulation.</strong> Deceptively edited content; deceptive co-option of existing brands; does not include use of deep learning processes.</li>
+                <li><strong>Deep Learning Processes.</strong> Augmented or fabricated content produced using deep learning processes; "deep fakes"; textual generation. Sometimes referred to as "<a href="https://securingdemocracy.gmfus.org/deepfake-myths-common-misconceptions-about-synthetic-media/" target="_blank">synthetic media</a>," although this term does not adequately distinguish between the use of deep learning and use of more basic manipulative techniques.</li>
+              </ul>
+            </li>
+          </ul>
+          <h5>What was the impact of the allegation on online media discourse?</h5>
+          <ul>
+            <li>
+              <strong>Attribution Impact.</strong> Measures the spread of case-related articles and content over the seven days following a foreign interference allegation. It is a sum of Facebook engagements, Twitter shares, and Reddit engagements. Methodology is <span class="pseudolink" onclick="window.scrollsmooth('attribution-impact', 'collapsible-methodology');">described</span> above to acquire online articles about cases and social media engagement of articles; social media data is defined and sourced by Buzzsumo and Crowdtangle.
+              <ul class="inner">
+                <li><strong>Article count</strong> (quantitative). The number of web links about the allegation in the week after the date of attribution of the case.</li>
+                <li><strong>Facebook engagement</strong> (quantitative). Aggregate shares, comments, and reactions of a web link.</li>
+                <li><strong>Twitter engagement</strong> (quantitative). Aggregate shares of a web link.</li>
+                <li><strong>Reddit engagement</strong> (quantitative). Aggregate shares and interactions of a web link.</li>
+                <li><strong>Total engagement</strong> (quantitative). Aggregate Facebook, Twitter, and Reddit engagement.</li>
+              </ul>
+            </li>
+          </ul>
+          <h5>How credible, biased, legitimate, and transparent is the allegation?</h5>
+          <ul>
+            <li>
+              <strong>Attribution Score.</strong> Methodology is described <span class="pseudolink" onclick="window.scrollsmooth('attribution-score', 'collapsible-methodology');">above</span>; the goal of this score is to critically assess the validity of the allegation from multiple perspectives.
+              <ul class="inner">
+                <li><strong>Credibility</strong></li>
+                <li><strong>Bias</strong></li>
+                <li><strong>Evidence</strong></li>
+                <li><strong>Transparency</strong></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="separator"></div>
+      </section>
+      <section class="content about">
+        <!--<h3>About</h3>-->
+        <h4>About This Project</h4>
+        <p>
+          The core FIAT research team is composed of <a href="https://twitter.com/etbrooking" target="_blank">Emerson T. Brooking</a> (lead), <a href="https://twitter.com/AlyssaKann" target="_blank">Alyssa Kann</a>, <a href="https://twitter.com/maxbrizzuto" target="_blank">Max Rizzuto</a>, <a href="https://twitter.com/jacqumalaret" target="_blank">Jacqueline Malaret</a>, and Helen Simpson.
+        </p>
+        <p>
+          The tool was designed by <a href="https://higsch.com" target="_blank">Matthias Stahl</a> <span class="smaller">(higsch | data & design)</span>.
+        </p>
+        <p>
+          This project was directed by <a href="https://twitter.com/grahambrookie" target="_blank">Graham Brookie</a> and <a href="https://twitter.com/etbrooking" target="_blank">Emerson T. Brooking</a>.
+        </p>
+        <p>
+          Invaluable counsel and coordination was provided by Nicholas Yap, Kelsey Henquinet, Andy Carvin, Anna Pellegatta, Devin Chavira, Eric Baker, and Zarine Kharazian.
+        </p>
+        <p>
+          This project is made possible thanks to the generosity and commitment of Craig Newmark Philanthropies. 
+        </p>
+        <h4>About the DFRLab</h4>
+        <p>
+          The Atlantic Council's <a href="https://www.atlanticcouncil.org/programs/digital-forensic-research-lab/" target="_blank">Digital Forensic Research Lab</a>—whose work resides at the unique intersection between government, media, and technology—aims to establish accountability and transparency online as a means to secure democracy and restore trust in public discourse.
+        </p>
+        <p>
+          DFRLab is spread across five continents, and its work is rooted among three pillars:
+        </p>
+        <ul>
+          <li>To promote objective fact as a foundation of government for and by people, to protect democratic institutions and norms from those who would undermine them online, and to identify, expose, and explain disinformation when and where it occurs.</li>
+          <li>To create a new model of expertise adapted for impact and real-world results.</li>
+          <li>To forge digital resilience at a time when humans are more interconnected than at any point in history.</li>
+        </ul>
+        <h4>About the Atlantic Council</h4>
+        <p>
+          <a href="https://www.atlanticcouncil.org/" target="_blank">The Atlantic Council</a> promotes constructive leadership and engagement in international affairs based on the Atlantic Community’s central role in meeting global challenges. The Council provides an essential forum for navigating the dramatic economic and political changes defining the twenty-first century by informing and galvanizing its uniquely influential network of global leaders. The Atlantic Council—through the papers it publishes, the ideas it generates, the future leaders it develops, and the communities it builds—shapes policy choices and strategies to create a more free, secure, and prosperous world.
+        </p>
+      </section>
+      <footer>
+        <div class="separator"></div>
+        <a href="https://www.atlanticcouncil.org/privacy-policy/" target="_blank">Privacy</a>
+        <a href="https://www.atlanticcouncil.org/programs/digital-forensic-research-lab/" target="_blank">Atlantic Council's Digital Forensic Research Lab</a>
+        <p>2020</p>
+      </footer>
+    </div>
+  </body>
+</html>
