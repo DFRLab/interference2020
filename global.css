@@ -1,0 +1,465 @@
+/* set the global variables */
+:root {
+  /* CI */
+  --dfrlab-green: #00857d;
+  --dfrlab-gray: #7e8083;
+  --dfrlab-lightgray: #cacaca;
+  --dfrlab-lightlightgray: #ECE9E9;
+  --dfrlab-silver: #bfb8af;
+  --dfrlab-white: #ffffff;
+  --dfrlab-black: #000000;
+
+  /* possible text colors */
+  --text-black: #2a3035;
+  --text-darkgray: #5e4a4a;
+  --text-purple: #452f47;
+
+  /* flames */
+  --flame-03: #c26e8d;
+  --flame-02: #d8808b;
+  --flame-01: #e2a6ad;
+  /* --flame-03: #a35b73;
+  --flame-02: #f88773;
+  --flame-01: #fac9b1; */
+
+  --usa-red: #b22234;
+  --usa-lightred: #c5888f;
+  --usa-lightlightred: #dbb6b6;
+  /* --usa-lightlightred: #DBBCB6; */
+  --usa-blue: #3c3b6e;
+  --usa-lightblue: #8f8eaa;
+  --usa-lightlightblue: #c9c7eb;
+  --usa-green: #a3b4a2;
+  /* --usa-red: #b22234; */
+
+  /* background */
+  /* --bg: #e4dac7; */
+  --bg: #F9F8F8;
+  /* --bg: #eee9df; */
+  --transparentbg: #F9F8F8cb;
+
+  /* fonts */
+  --font-01: Volkhov, serif;
+  --font-02: Quicksand, sans-serif;
+}
+
+/* reset and page-wide settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+
+body {
+  background-color: var(--bg);
+  position: relative;
+  pointer-events: all;
+}
+
+#svelte-target {
+  width: 100%;
+}
+
+/* switch font size for different device widths */
+@media (min-width: 600px) {
+  html,
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 980px) {
+  html,
+  body {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1260px) {
+  html,
+  body {
+    font-size: 18px;
+  }
+}
+
+/* general classes */
+.disable-select {
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+
+a, span.pseudolink {
+  color: var(--usa-blue);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+a:hover, span.pseudolink:hover {
+  color: var(--usa-lightblue);
+}
+
+.highlighted {
+  margin: 0 -0.1rem;
+  padding: 0 0.1rem;
+  border: none;
+  border-radius: 2px;
+  background-color:#c95c68;
+}
+
+.no-pointer-events {
+  pointer-events: none;
+}
+
+/* social media categories */
+.facebook {
+  fill: #4267b2;
+  background-color: #4267b2a1;
+}
+
+.twitter {
+  fill: #1da1f2;
+  background-color: #1da1f2a1;
+}
+
+.reddit {
+  fill: #e24545;
+  background-color: #e24545a1;
+}
+
+
+/* the landing page */
+.page-wrapper {
+  width: 100%;
+  padding: 2rem 0;
+  position: relative;
+}
+
+section {
+  font-family: var(--font-02);
+}
+
+.separator {
+  width: 67%;
+  max-width: 450px;
+  margin: 1.5rem auto 1.5rem auto;
+  border-bottom: 1px solid var(--dfrlab-gray);
+}
+
+.separator.thicker {
+  border-width: 2px;
+  border-color: var(--usa-blue);
+}
+
+.info-card {
+  display: inline-block;
+  margin: 0 -0.2rem 0 0.1rem;
+  padding: 0 0.2rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: var(--bg);
+  border: none;
+  border-radius: 2px;
+  background-color: var(--usa-lightred);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+              0 2px 4px rgba(0,0,0,0.07);
+  transform: translateY(-0.5rem);
+}
+
+.fiat-title-bg {
+  width: 50%;
+  max-width: 1100px;
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  z-index: -1;
+}
+
+@media (min-width: 980px) {
+  .fiat-title-bg {
+    top: 0;
+  }
+}
+
+@media (min-width: 1260px) {
+  .fiat-title-bg {
+    top: -50px;
+  }
+}
+
+.fiat-title-bg img {
+  width: 100%;
+  position: relative;
+  left: -50%;
+}
+
+section.content.title {
+  padding-top: 1rem;
+  position: relative;
+}
+
+section.title .logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2rem;
+}
+
+section.title .logos a {
+  height: 100%;
+}
+
+section.title .logos a:not(:last-child) {
+  margin-right: 1rem;
+}
+
+section.title .logos a img {
+  height: 100%;
+}
+
+section.title .logos a.smaller {
+  height: 80%;
+}
+
+section.content {
+  width: 100%;
+  max-width: 1100px;
+  margin: 1rem auto;
+  padding: 0 1.5rem;
+}
+
+.no-lower-margin, section.no-lower-margin {
+  margin-bottom: 0;
+}
+
+section.no-upper-margin {
+  margin-top: 0;
+}
+
+section h1 {
+  margin: 0.5rem 0 0 0;
+  font-family: var(--font-01);
+  font-size: 3rem;
+  color: var(--usa-blue);
+  text-align: center;
+}
+
+section h2, section h3 {
+  color: var(--text-black);
+}
+
+section h2 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+  text-align: center;
+  color: var(--usa-blue);
+}
+
+section h3 {
+  margin: 1.2rem 0 0 0;
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: italic;
+}
+
+section h4 {
+  margin: 1rem 0 0 0;
+  font-size: 0.9rem;
+  font-weight: normal;
+  font-style: italic;
+}
+
+section h5 {
+  margin: 0.8rem 0 0 0;
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: italic;
+}
+
+section span.copy-tooltip {
+  margin: 0 -0.15rem;
+  padding: 0 0.15rem;
+  border: none;
+  border-radius: 2px;
+  background-color: var(--dfrlab-lightgray);
+}
+
+section p, section ul {
+  margin: 0.7rem 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+section p.center {
+  text-align: center;
+}
+
+section p.smaller, section span.smaller {
+  font-size: 0.75rem;
+}
+
+section p span.label {
+  display: block;
+  height: 100%;
+  min-width: 7rem;
+}
+
+@media (min-width: 600px) {
+  section p span.label {
+    display: inline-block;
+  }
+}
+
+section em {
+  font-style: italic;
+  text-decoration: none;
+  color: var(--text-black);
+}
+
+/* collapsibles */
+input.toggle[type='checkbox'] {
+  display: none;
+}
+
+.lbl-toggle {
+  display: block;
+  margin-left: -0.3rem;
+  padding: 0.2rem 0;
+  font-size: 0.9rem;
+  font-weight: normal;
+  font-style: italic;
+  color: var(--text-black);
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.lbl-toggle.top {
+  font-size: 0.85rem;
+  font-weight: normal;
+  font-style: normal;
+}
+
+.lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-top: 2px;
+  transform: translateX(-0.6rem) translateY(-2px);
+  transition: transform 200ms ease-out;
+}
+
+.collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 200ms ease-in-out;
+}
+
+.collapsible-content h4, .collapsible-content h5 {
+  margin: 1.2rem 1rem 0 1rem;
+}
+
+.collapsible-content p {
+  padding: 0 1rem;
+}
+
+.toggle:checked + .lbl-toggle + .collapsible-content {
+  max-height: 10000px;
+  border: 1px solid var(--dfrlab-lightgray);
+  border-radius: 3px;
+}
+
+.toggle:checked + .lbl-toggle::before {
+  transform: rotate(90deg) translateY(0.6rem);
+}
+
+.toggle:checked + .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+section ul {
+  padding: 0 2.5rem;
+  list-style-type: disc;
+}
+
+section ul li {
+  margin: 0.2rem 0;
+  line-height: 1.6;
+}
+
+section ul.inner {
+  margin: 0;
+}
+
+section ul.filter-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  list-style-type: none;
+}
+
+section ul.filter-list li {
+  margin: 0.2rem -0.1rem;
+  padding: 0 0.1rem;
+  color: var(--usa-blue);
+  border-bottom: 2px solid var(--usa-blue);
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+section ul.filter-list li:hover {
+  color: var(--bg);
+  border-radius: 3px;
+  background-color: var(--usa-lightblue);
+}
+
+section ul.filter-list li:hover span.apply-filter {
+  background-color: var(--usa-blue);
+}
+
+section ol {
+  padding: 0 2.5rem;
+  list-style-type: decimal;
+  counter-reset: section;
+}
+
+section ol li {
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  counter-increment: step-counter;
+  content: counter(step-counter);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+footer a, footer p {
+  margin: 0.2rem 0;
+  font-family: var(--font-02);
+  font-size: 0.7rem;
+  text-align: center;
+  text-decoration: none;
+}
