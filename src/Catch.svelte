@@ -11,7 +11,7 @@
 
 <section class="content catch">
   <p>{content}</p>
-  <span class="pseudolink" on:click={sendMail}>Send eMail with link.</span>
+  <span class="pseudolink" on:click={sendMail}>Send Email with Link</span>
 </section>
 <div class="placeholder-image">
   <img src="images/screenshots/fiat_placeholder.jpg" alt="Screenshot of the visualization showing red balloons on a timeline." />
