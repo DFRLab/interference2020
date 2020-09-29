@@ -191,7 +191,7 @@
         </div>
         {#if ($tooltip.tp.imageUrl)}
           <div class="image">
-            <img src="images/cases/{$tooltip.tp.caseHash}.jpg" alt={$tooltip.tp.shortTitle} />
+            <img src="https://interference2020.org/images/cases/{$tooltip.tp.caseHash}.jpg" alt={$tooltip.tp.shortTitle} />
             <p>{$tooltip.tp.imageCredit}</p>
           </div>
         {/if}
