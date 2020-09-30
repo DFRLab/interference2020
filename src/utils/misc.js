@@ -1,5 +1,6 @@
 import { uniq } from 'lodash';
 import { mean, min, max } from 'd3';
+import { images } from '../inputs/dataPaths';
 
 // extract attribution date range from data
 export const getTimeRange = (data) => {
@@ -11,7 +12,7 @@ export const getTimeRange = (data) => {
 
 // preload images
 export const preloadImages = (data) => {
-  data.forEach((d) => (new Image()).src = `images/cases/${d.caseHash}.jpg`);
+  data.forEach((d) => (new Image()).src = `${images}${d.caseHash}.jpg`);
 }
 
 // split string in array

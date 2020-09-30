@@ -1,11 +1,10 @@
 import { csv, timeParse } from 'd3';
+import { spotData } from '../inputs/dataPaths';
 
-// this will be fetched from GitHub in future
-const dataPath = 'data/spots.csv';
 const parseDate = timeParse('%m/%d/%Y');
 
 const loadSpots = async () => {
-  const data = await csv(dataPath, (d, i) => {
+  const data = await csv(spotData, (d, i) => {
     return {
       id: i,
       name: d.event_name,

@@ -14,6 +14,7 @@
     textSearchFilter,
     selectAllFilters} from '../stores/filters';
   import { maxScores } from '../inputs/scores';
+  import { images } from '../inputs/dataPaths';
 
   import EventTooltipCross from './EventTooltipCross.svelte';
   import ScoreBar from './ScoreBar.svelte';
@@ -191,7 +192,7 @@
         </div>
         {#if ($tooltip.tp.imageUrl)}
           <div class="image">
-            <img src="images/cases/{$tooltip.tp.caseHash}.jpg" alt={$tooltip.tp.shortTitle} />
+            <img src="{images}{$tooltip.tp.caseHash}.jpg" alt={$tooltip.tp.shortTitle} />
             <p>{$tooltip.tp.imageCredit}</p>
           </div>
         {/if}

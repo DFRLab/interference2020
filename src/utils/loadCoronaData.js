@@ -1,11 +1,11 @@
 import { csv, timeParse } from 'd3';
 import { sortConsistently } from './misc';
+import { coronaData } from '../inputs/dataPaths';
 
-const dataPath = 'https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv';
 const parseDate = timeParse('%Y-%m-%d');
 
 const loadCoronaData = async () => {
-  const data = (await csv(dataPath, (d, i) => {
+  const data = (await csv(coronaData, (d, i) => {
     return {
       id: i,
       date: parseDate(d.date),
