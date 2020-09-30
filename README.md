@@ -20,4 +20,22 @@ For the Interference2020 database, please go to [this repository](https://github
 The data visualization has been built with HTML, CSS and JavaScript – heavily using the [Svelte](https://svelte.dev) frontend compiler. Interference data is dynamically pulled from a separate [data repository](https://github.com/DFRLab/interference2020-Data). The world map is pulled from [JSDELIVR](https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json) and uses the [World Atlas](https://www.npmjs.com/package/world-atlas) TopoJSON package. COVID-19 case and death numbers in the U.S. are collected from a repository managed by [The New York Times](https://github.com/nytimes/covid-19-data).
 
 
+## Run locally
+
+1. Download the repository and install the dependencies.
+
+    ```bash
+    git clone https://github.com/DFRLab/interference2020.git
+    cd interference2020
+    npm install
+    ```
+
+1. Start [Rollup](https://rollupjs.org)
+
+    ```bash
+    npm run dev
+    ```
+
+2. Navigate to [localhost:5000](http://localhost:5000). You should see your app running.
+
 *Built in August & September 2020.*
