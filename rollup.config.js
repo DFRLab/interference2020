@@ -74,15 +74,7 @@ export default {
 		commonjs(),
     postcss({
       extract: true,
-      minimize: true,
-      use: [
-        ['sass', {
-          includePaths: [
-            './src/theme',
-            './node_modules'
-          ]
-        }]
-      ]
+      minimize: true
     }),
 
 		// In dev mode, call `npm run start` once

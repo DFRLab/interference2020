@@ -137,7 +137,7 @@
                   {activityTf($tooltip.tp.startDate)} to {activityTf($tooltip.tp.endDate)}
                 {/if}
               {:else}
-                unknown
+                unspecified
               {/if}
             </p>
           </div>

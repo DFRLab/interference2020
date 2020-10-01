@@ -95,7 +95,7 @@
               class:selected={$selected.map((d) => d.id).includes(row.id)}>
             {#each columns as column (column.property)}
               <td class={column.classes} style={column.minWidth ? `min-width: ${column.minWidth};`: ''}>
-                {#if (row[column.property] === undefined)}
+                {#if (row[column.property] === undefined || row[column.property] === null)}
                   {''}
                 {:else if (column.format)}
                   {column.format(row[column.property])}
