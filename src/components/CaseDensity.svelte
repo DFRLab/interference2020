@@ -15,9 +15,9 @@
 
   const margin = {
     top: 10,
-    right: 2,
+    right: 6,
     bottom: 10,
-    left: 2
+    left: 6
   };
 
   const line = d3line().curve(curveBasis);
