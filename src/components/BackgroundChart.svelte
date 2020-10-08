@@ -1,23 +1,10 @@
 <script>
   // loads data for context datasets and holds the individual graphing components
   import { onMount } from 'svelte';
-  import loadCoronaData from '../utils/loadCoronaData';
   import { contextData, originalTimeDomain } from '../stores/filters';
   import { margin } from '../stores/dimensions';
 
   import CoronaChart from './CoronaChart.svelte';
-
-  onMount(async () => {
-    $contextData = [
-      {
-        id: 'corona',
-        name: 'COVID-19 in the US',
-        source: 'The New York Times',
-        data: await loadCoronaData(),
-        selected: false
-      }
-    ];
-  });
 </script>
 
 <g class="background-chart">

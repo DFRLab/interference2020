@@ -17,6 +17,7 @@
   import Dropdown from './Dropdown.svelte';
   import Slider from './Slider.svelte';
   import SearchText from './SearchText.svelte';
+  import Share from './Share.svelte';
 
   export let timePoints;
 
@@ -40,65 +41,72 @@
 </script>
 
 {#if (timePoints)}
-  <div class="controls">
-    <SearchText searchString={$textSearchFilter}
-                label="Search"
-                on:change={(e) => $textSearchFilter = e.detail}
-                on:reset={() => textSearchFilter.reset()} />
-    <Slider value={$attributionScoreFilter}
-            label="Attribution Score"
-            min={attributionScoreDef[0]} 
-            max={attributionScoreDef[1]}
-            showHandleLabels={false}
-            startColor={$attributionScoreScale(attributionScoreDef[0])}
-            stopColor={$attributionScoreScale(attributionScoreDef[1])}
-            on:changed={(e) => $attributionScoreFilter = e.detail} />
-    <Dropdown items={addCount($disinformantNationFilter, 'disinformantNation', timePoints)}
-              label="Disinformant Nation"
-              superior
-              on:itemsAdded={(e) => disinformantNationFilter.select(e.detail)}
-              on:itemsRemoved={(e) => disinformantNationFilter.unselect(e.detail)} />
-    <Dropdown items={addCount($platformFilter, 'platforms', timePoints)}
-              label="Platform"
-              on:itemsAdded={(e) => platformFilter.select(e.detail)}
-              on:itemsRemoved={(e) => platformFilter.unselect(e.detail)} />
-    <Dropdown items={addCount($sourceFilter, 'sourceFilter', timePoints)}
-              label="Source"
-              hideOneHitWonders
-              superior
-              on:itemsAdded={(e) => sourceFilter.select(e.detail)}
-              on:itemsRemoved={(e) => sourceFilter.unselect(e.detail)} />
-    <Dropdown items={addCount($sourceCategoryFilter, 'sourceCategory', timePoints)}
-              label="Source Category"
-              on:itemsAdded={(e) => sourceCategoryFilter.select(e.detail)}
-              on:itemsRemoved={(e) => sourceCategoryFilter.unselect(e.detail)} />
-    <Dropdown items={addCount($methodFilter, 'methods', timePoints)}
-              label="Method"
-              superior
-              on:itemsAdded={(e) => methodFilter.select(e.detail)}
-              on:itemsRemoved={(e) => methodFilter.unselect(e.detail)} />
-    <Dropdown items={$contextData}
-              label="Context Dataset"
-              nameField="name"
-              on:itemsAdded={(e) => contextData.select(e.detail)}
-              on:itemsRemoved={(e) => contextData.unselect(e.detail)} />
-    <button class="reset-filters"
-            on:click={() => handleButtonClick()}>
-      Reset
-    </button>
+  <div class="controls-inner-wrapper">
+    <div class="controls">
+      <SearchText searchString={$textSearchFilter}
+                  label="Search"
+                  on:change={(e) => $textSearchFilter = e.detail}
+                  on:reset={() => textSearchFilter.reset()} />
+      <Slider value={$attributionScoreFilter}
+              label="Attribution Score"
+              min={attributionScoreDef[0]} 
+              max={attributionScoreDef[1]}
+              showHandleLabels={false}
+              startColor={$attributionScoreScale(attributionScoreDef[0])}
+              stopColor={$attributionScoreScale(attributionScoreDef[1])}
+              on:changed={(e) => $attributionScoreFilter = e.detail} />
+      <Dropdown items={addCount($disinformantNationFilter, 'disinformantNation', timePoints)}
+                label="Disinformant Nation"
+                superior
+                on:itemsAdded={(e) => disinformantNationFilter.select(e.detail)}
+                on:itemsRemoved={(e) => disinformantNationFilter.unselect(e.detail)} />
+      <Dropdown items={addCount($platformFilter, 'platforms', timePoints)}
+                label="Platform"
+                on:itemsAdded={(e) => platformFilter.select(e.detail)}
+                on:itemsRemoved={(e) => platformFilter.unselect(e.detail)} />
+      <Dropdown items={addCount($sourceFilter, 'sourceFilter', timePoints)}
+                label="Source"
+                hideOneHitWonders
+                superior
+                on:itemsAdded={(e) => sourceFilter.select(e.detail)}
+                on:itemsRemoved={(e) => sourceFilter.unselect(e.detail)} />
+      <Dropdown items={addCount($sourceCategoryFilter, 'sourceCategory', timePoints)}
+                label="Source Category"
+                on:itemsAdded={(e) => sourceCategoryFilter.select(e.detail)}
+                on:itemsRemoved={(e) => sourceCategoryFilter.unselect(e.detail)} />
+      <Dropdown items={addCount($methodFilter, 'methods', timePoints)}
+                label="Method"
+                superior
+                on:itemsAdded={(e) => methodFilter.select(e.detail)}
+                on:itemsRemoved={(e) => methodFilter.unselect(e.detail)} />
+      <Dropdown items={$contextData}
+                label="Context Dataset"
+                nameField="name"
+                on:itemsAdded={(e) => contextData.select(e.detail)}
+                on:itemsRemoved={(e) => contextData.unselect(e.detail)} />
+      <button class="reset-filters"
+              on:click={() => handleButtonClick()}>
+        Reset
+      </button>
+    </div>
+    <Share />
   </div>
 {/if}
 
 <style>
+  .controls-inner-wrapper {
+    padding: 0.2rem;
+    border: none;
+    border-radius: 3px;
+    background-color: var(--transparentbg);
+  }
+
   .controls {
     display: grid;
     grid-auto-flow: column;
     grid-template-rows: repeat(9, 1fr);
     grid-gap: 0.3rem;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 3px;
-    background-color: var(--transparentbg);
+    margin-bottom: 0.7rem;
   }
 
   @media (min-width: 460px) {
