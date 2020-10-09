@@ -3,9 +3,16 @@
   import ShinyCircle from './ShinyCircle.svelte';
   import Balloon from './Balloon.svelte';
 
+  import { tweened } from 'svelte/motion';
+
   export let timePoint;
   export let selected = false;
   export let hovered = false;
+
+  const tweenedX = tweened(0, {
+    delay: 0,
+    duration: 750,
+  });
 </script>
 
 {#if (timePoint.show)}
