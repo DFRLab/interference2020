@@ -58,6 +58,18 @@
   function handleKeyUp(e) {
     if (e.keyCode === 27) {
       resetTimeDomain();
+      return;
+    }
+
+    if ($originalTimeDomain !== null && (e.keyCode === 37 || e.keyCode == 39)) {
+      const prevDomain = [...$timeScale.domain()];
+      const diff = Math.floor(0.25 * (prevDomain[1] - prevDomain[0]));
+      if (e.keyCode === 37) {
+        $timeScale.domain([new Date(prevDomain[0] - diff), new Date(prevDomain[1] - diff)]);
+      } else if (e.keyCode === 39) {
+        $timeScale.domain([new Date(prevDomain[0] - - diff), new Date(prevDomain[1] - - diff)]);
+      }
+      $timeScale = $timeScale;
     }
   }
 
