@@ -29,7 +29,7 @@
      on:mouseover={handleMouseover}
      on:click={handleClick}>
   <Defs />
-  <rect x="0" y="0" width={$width} height={$panelHeight*1.1}></rect>
+  <rect x="0" y="0" width={$width} height={$panelHeight * 1.1}></rect>
   <BackgroundChart />
   <Sources {timePoints} />
   <Labels />

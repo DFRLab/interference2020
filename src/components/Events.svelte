@@ -2,6 +2,7 @@
   // setting up all events
   import Event from './Event.svelte';
   import { hovered, selected } from '../stores/eventSelections';
+  import { tweened } from 'svelte/motion';
 
   export let timePoints = [];
 
