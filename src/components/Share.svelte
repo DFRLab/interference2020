@@ -45,7 +45,7 @@
      href="https://twitter.com/intent/tweet?url={url.replace('#', '%23')}"
      data-size="large"
      target="_blank">
-    <Icon data={twitter}/>
+    <Icon data={twitter} scale="1.2" />
   </a>
   <span class="pseudolink"
         class:gray={mode === 'tooltip'}
