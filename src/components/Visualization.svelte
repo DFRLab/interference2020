@@ -6,6 +6,7 @@
   import { onMount } from 'svelte';
   import loadData from '../utils/loadData';
   import loadMapData from '../utils/loadMapData';
+  import loadCoronaData from '../utils/loadCoronaData';
   import { setScales } from '../utils/scales';
   import {
     width,
@@ -30,8 +31,10 @@
     attributionScoreFilter,
     attributionScoreDef,
     textSearchFilter,
-    originalTimeDomain } from '../stores/filters';
-  import { haveOverlap, withinRange, includesTextSearch, preloadImages } from '../utils/misc';
+    originalTimeDomain,
+    contextData,
+    caseIdFilter } from '../stores/filters';
+  import { haveOverlap, withinRange, includesTextSearch, isCaseId, preloadImages } from '../utils/misc';
   import { selected } from '../stores/eventSelections';
   import { drawWrapper } from '../stores/elements';
   
@@ -46,6 +49,7 @@
     forceCollide,
     timeFormat } from 'd3';
   import { sortConsistently } from '../utils/misc';
+  import { parseUrl } from '../utils/share';
 
   import ToTop from './ToTop.svelte';
   import TopVisualContent from './TopVisualContent.svelte';
@@ -85,7 +89,33 @@
     sourceCategoryFilter.init(data, 'sourceCategory');
     $attributionScoreFilter = attributionScoreDef;
 
+    // get context datasets
+    $contextData = [
+      {
+        id: 'corona',
+        name: 'COVID-19 in the US',
+        source: 'The New York Times',
+        data: await loadCoronaData(),
+        selected: false
+      }
+    ];
+
     preloadImages(data);
+
+    // apply filters from URL
+    if (window.location.hash.length > 1) {
+      const urlFilters = parseUrl(window.location.hash);
+
+      disinformantNationFilter.applyBoolArray(urlFilters.disinformantNations);
+      platformFilter.applyBoolArray(urlFilters.platforms);
+      methodFilter.applyBoolArray(urlFilters.methods);
+      sourceFilter.applyBoolArray(urlFilters.sources);
+      sourceCategoryFilter.applyBoolArray(urlFilters.sourceCategories);
+      contextData.applyBoolArray(urlFilters.contextData);
+      $attributionScoreFilter = urlFilters.attributionScores;
+      $textSearchFilter = urlFilters.textSearch;
+      $caseIdFilter = urlFilters.caseId;
+    } 
   });
 
   // set the scales
@@ -152,6 +182,7 @@
               && haveOverlap($sourceCategoryFilter, d.sourceCategory)
               && includesTextSearch($textSearchFilter, d.search)
               && withinRange($attributionScoreFilter, d.attributionScore)
+              && isCaseId($caseIdFilter, d.id)
       }));
     }
 </script>

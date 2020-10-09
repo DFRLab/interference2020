@@ -18,6 +18,11 @@ function createInclusiveFilter() {
   const select = (id) => update((f) => f.map((d) => ({...d, selected: [id].flat().includes(d.id) ? true : d.selected})));
   const unselectAll = () => update((f) => f.map((d) => ({...d, selected: false})));
 
+  const applyBoolArray = (arr) => {
+    const tmpArr = [...arr].reverse();
+    update((f) => f.reverse().map((d, i) => ({...d, selected: tmpArr[i] !== undefined ? tmpArr[i] : false})).reverse());
+  };
+
   return {
     subscribe,
     set: (value) => set(value),
@@ -29,7 +34,8 @@ function createInclusiveFilter() {
     },
     selectAll: () => update((f) => f.map((d) => ({...d, selected: true}))),
     unselect: (id) => update((f) => f.map((d) => ({...d, selected: [id].flat().includes(d.id) ? false : d.selected}))),
-    unselectAll
+    unselectAll,
+    applyBoolArray
   };
 }
 
@@ -73,6 +79,7 @@ export const selectAllFilters = (disinformantNation = true) => {
   sourceCategoryFilter.selectAll();
   attributionScoreFilter.set(attributionScoreDef);
   textSearchFilter.reset();
+  caseIdFilter.set(undefined);
 };
 
 export const textSearchFilter = createTextSearchFilter();
@@ -81,3 +88,5 @@ export const contextData = createInclusiveFilter();
 
 export const brushed = writable(false);
 export const originalTimeDomain = writable(null);
+
+export const caseIdFilter = writable();

@@ -19,6 +19,7 @@
   import EventTooltipCross from './EventTooltipCross.svelte';
   import ScoreBar from './ScoreBar.svelte';
   import ScoreQuestions from './ScoreQuestions.svelte';
+  import Share from './Share.svelte';
 
   const offset = {
     top: 10,
@@ -115,31 +116,35 @@
           style="width: {tWidth}px;
                  height: {Math.abs(tHeight - Math.abs(contentTop))}px;
                  position: absolute;
-                 top: {$tooltip.tp.rSmiTot + 5}px;"></div>
+                 top: {$tooltip.tp.rSmiTot + 5}px;
+                 border: 1px solid black;"></div>
     <div class="content"
          bind:this={elem}
          bind:clientHeight={tHeight}
-         style="top: {contentTop}px; margin: 0px {$tooltip.tp.rSmiTot / 2 + offset.left}px;">
+         style="top: {contentTop}px; margin: 0px {$tooltip.tp.rSmiTot / 3 + offset.left}px;">
       <div class="scroll-wrapper"
            bind:this={scrollWrapper}>
         <div class="title">
-          <div class="title-dates">
-            <p class="no-break">{attributionTf($tooltip.tp.attributionDate)} | {@html highlight($tooltip.tp.disinformantAttribution)}</p>
-            <p>Active: 
-              {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}
-                {activityTf($tooltip.tp.startDate)} <span class="small">(approx.)</span>
-              {:else if (!$tooltip.tp.startDate && $tooltip.tp.endDate)}
-                {activityTf($tooltip.tp.endDate)} <span class="small">(approx.)</span>
-              {:else if ($tooltip.tp.startDate && $tooltip.tp.endDate)}
-                {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}
-                  {activityTf($tooltip.tp.startDate)}
+          <div class="title-top">
+            <div class="title-dates">
+              <p class="no-break">{attributionTf($tooltip.tp.attributionDate)} | {@html highlight($tooltip.tp.disinformantAttribution)}</p>
+              <p>Active: 
+                {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}
+                  {activityTf($tooltip.tp.startDate)} <span class="small">(approx.)</span>
+                {:else if (!$tooltip.tp.startDate && $tooltip.tp.endDate)}
+                  {activityTf($tooltip.tp.endDate)} <span class="small">(approx.)</span>
+                {:else if ($tooltip.tp.startDate && $tooltip.tp.endDate)}
+                  {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}
+                    {activityTf($tooltip.tp.startDate)}
+                  {:else}
+                    {activityTf($tooltip.tp.startDate)} to {activityTf($tooltip.tp.endDate)}
+                  {/if}
                 {:else}
-                  {activityTf($tooltip.tp.startDate)} to {activityTf($tooltip.tp.endDate)}
+                  unspecified
                 {/if}
-              {:else}
-                unspecified
-              {/if}
-            </p>
+              </p>
+            </div>
+            <Share text="" caseId={$tooltip.tp.id} mode="tooltip" />
           </div>
           <h2>{@html highlight($tooltip.tp.shortTitle)}</h2>
           <div class="score-bars">
@@ -286,6 +291,16 @@
     padding: 1rem;
     background-image: linear-gradient(var(--usa-lightlightred), var(--usa-lightred));
     position: relative;
+  }
+
+  .title-top {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .title-dates {
+    flex: 1;
   }
 
   .title-dates p {
