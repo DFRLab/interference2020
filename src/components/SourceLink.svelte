@@ -5,11 +5,14 @@
   import { linear } from 'svelte/easing';
   import { growDuration, bloomDuration, jitterFactor } from '../transitions/constants';
   import { curvyDoubleLine } from '../utils/paths';
+  import { createTweenedPos } from '../transitions/tween';
 
   export let source;
   export let selected = 'unselected';
   export let hovered = 'unselected';
   export let extraFaint = false;
+
+  const tweenedPos = createTweenedPos();
 
   function setOpacity(selected, hovered, extraFaint) {
     if (extraFaint) return 0.2 / 3 / 2;
@@ -25,6 +28,8 @@
     return(opacity);
   }
 
+  $: $tweenedPos = {x: source.x, fy: source.fy, _x: source._x, _y: source._y};
+
   $: opacity = setOpacity(selected, hovered, extraFaint);
 </script>
 
@@ -34,10 +39,10 @@
      class:selected={selected || hovered}>
     <path d={curvyDoubleLine(source.xCountry,
                              source.yCountry,
-                             source._x,
-                             source._y,
-                             source.x,
-                             source.fy + source.rSmiTot - 5,
+                             $tweenedPos._x,
+                             $tweenedPos._y,
+                             $tweenedPos.x,
+                             $tweenedPos.fy + source.rSmiTot - 5,
                              source.shift,
                              $mapHeight / 15)}
           stroke-width={$minDim / 200}

@@ -5,6 +5,7 @@
   import { sortConsistently } from '../utils/misc';
 
   export let timePoint;
+  export let tweenedPos;
   export let selected = false;
   export let hovered = false;
 
@@ -34,7 +35,7 @@
 
 <g class="shiny-circle"
    class:selected={selected || hovered}
-   transform="translate({timePoint.x} {timePoint.fy})"
+   transform="translate({tweenedPos.x} {tweenedPos.fy})"
    in:fade|local={{duration: bloomDuration, delay: growDuration + timePoint.id * jitterFactor}}
    out:fade|local={{duration: bloomDuration, delay: timePoint.id * jitterFactor}}>
   {#each sortedRadii as {id, className, r} (id)}

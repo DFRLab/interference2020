@@ -2,16 +2,14 @@
   // the single balloon implementation
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { width, height } from '../stores/dimensions';
-  import { oneLineTrim } from 'common-tags';
+  import { width } from '../stores/dimensions';
   import { bloomDuration, growDuration, jitterFactor } from '../transitions/constants';
-  import { usaRed } from '../utils/colors';
-  import { sortConsistently } from '../utils/misc';
   import { createEventDispatcher } from 'svelte';
 
   import EventTooltip from './EventTooltip.svelte';
 
   export let timePoint;
+  export let tweenedPos;
   export let selected = false;
 
   const dispatch = createEventDispatcher();
@@ -28,7 +26,7 @@
 
 <g class="balloon"
    class:selected
-   transform="translate({timePoint.x} {timePoint.fy})"
+   transform="translate({tweenedPos.x} {tweenedPos.fy})"
    on:mouseover|stopPropagation={handleMouseOver}
    on:click|stopPropagation={handleMouseClick}
    in:fade|local={{duration: bloomDuration, delay: growDuration + timePoint.id * jitterFactor}}
