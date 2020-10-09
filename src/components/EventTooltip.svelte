@@ -116,11 +116,12 @@
           style="width: {tWidth}px;
                  height: {Math.abs(tHeight - Math.abs(contentTop))}px;
                  position: absolute;
-                 top: {$tooltip.tp.rSmiTot + 5}px;"></div>
+                 top: {$tooltip.tp.rSmiTot + 5}px;
+                 border: 1px solid black;"></div>
     <div class="content"
          bind:this={elem}
          bind:clientHeight={tHeight}
-         style="top: {contentTop}px; margin: 0px {$tooltip.tp.rSmiTot / 2 + offset.left}px;">
+         style="top: {contentTop}px; margin: 0px {$tooltip.tp.rSmiTot / 3 + offset.left}px;">
       <div class="scroll-wrapper"
            bind:this={scrollWrapper}>
         <div class="title">
