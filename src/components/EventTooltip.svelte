@@ -116,8 +116,7 @@
           style="width: {tWidth}px;
                  height: {Math.abs(tHeight - Math.abs(contentTop))}px;
                  position: absolute;
-                 top: {$tooltip.tp.rSmiTot + 5}px;
-                 border: 1px solid black;"></div>
+                 top: {$tooltip.tp.rSmiTot + 5}px;"></div>
     <div class="content"
          bind:this={elem}
          bind:clientHeight={tHeight}
