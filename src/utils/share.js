@@ -1,4 +1,5 @@
-export const baseUrl = 'http://localhost:5000';//'https://interference2020.org';
+export const baseUrl = 'https://interference2020.org';
+// export const baseUrl = 'http://localhost:5000';
 
 export const urlFromFilters = (disinformantNations,
                                platforms,
