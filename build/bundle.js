@@ -46423,93 +46423,94 @@ var app = (function () {
 	      set_style(div1, "top",
 	      /*$tooltip*/
 	      ctx[10].tp.rSmiTot + 5 + "px");
+	      set_style(div1, "border", "1px solid black");
 	      add_location(div1, file$n, 114, 4, 3696);
 	      html_tag = new HtmlTag(null);
 	      attr_dev(p0, "class", "no-break svelte-1wuxqa6");
-	      add_location(p0, file$n, 128, 14, 4294);
+	      add_location(p0, file$n, 129, 14, 4336);
 	      attr_dev(p1, "class", "svelte-1wuxqa6");
-	      add_location(p1, file$n, 129, 14, 4434);
+	      add_location(p1, file$n, 130, 14, 4476);
 	      attr_dev(div2, "class", "title-dates svelte-1wuxqa6");
-	      add_location(div2, file$n, 127, 12, 4254);
+	      add_location(div2, file$n, 128, 12, 4296);
 	      attr_dev(div3, "class", "title-top svelte-1wuxqa6");
-	      add_location(div3, file$n, 126, 10, 4218);
+	      add_location(div3, file$n, 127, 10, 4260);
 	      attr_dev(h2, "class", "svelte-1wuxqa6");
-	      add_location(h2, file$n, 147, 10, 5350);
+	      add_location(h2, file$n, 148, 10, 5392);
 	      attr_dev(p2, "class", "svelte-1wuxqa6");
-	      add_location(p2, file$n, 151, 14, 5618);
+	      add_location(p2, file$n, 152, 14, 5660);
 	      attr_dev(div4, "class", "score-bar-wrapper svelte-1wuxqa6");
-	      add_location(div4, file$n, 149, 12, 5448);
+	      add_location(div4, file$n, 150, 12, 5490);
 	      attr_dev(p3, "class", "svelte-1wuxqa6");
-	      add_location(p3, file$n, 155, 14, 5838);
+	      add_location(p3, file$n, 156, 14, 5880);
 	      attr_dev(div5, "class", "score-bar-wrapper svelte-1wuxqa6");
-	      add_location(div5, file$n, 153, 12, 5668);
+	      add_location(div5, file$n, 154, 12, 5710);
 	      attr_dev(p4, "class", "svelte-1wuxqa6");
-	      add_location(p4, file$n, 159, 14, 6052);
+	      add_location(p4, file$n, 160, 14, 6094);
 	      attr_dev(div6, "class", "score-bar-wrapper svelte-1wuxqa6");
-	      add_location(div6, file$n, 157, 12, 5888);
+	      add_location(div6, file$n, 158, 12, 5930);
 	      attr_dev(p5, "class", "svelte-1wuxqa6");
-	      add_location(p5, file$n, 163, 14, 6271);
+	      add_location(p5, file$n, 164, 14, 6313);
 	      attr_dev(div7, "class", "score-bar-wrapper svelte-1wuxqa6");
-	      add_location(div7, file$n, 161, 12, 6099);
+	      add_location(div7, file$n, 162, 12, 6141);
 	      attr_dev(span, "class", "score-info-icon disable-select svelte-1wuxqa6");
-	      add_location(span, file$n, 165, 12, 6322);
+	      add_location(span, file$n, 166, 12, 6364);
 	      attr_dev(div8, "class", "score-bars svelte-1wuxqa6");
-	      add_location(div8, file$n, 148, 10, 5411);
+	      add_location(div8, file$n, 149, 10, 5453);
 	      attr_dev(div9, "class", "title svelte-1wuxqa6");
-	      add_location(div9, file$n, 125, 8, 4188);
+	      add_location(div9, file$n, 126, 8, 4230);
 	      attr_dev(h30, "class", "svelte-1wuxqa6");
-	      add_location(h30, file$n, 176, 10, 6784);
+	      add_location(h30, file$n, 177, 10, 6826);
 	      attr_dev(div10, "class", "smi svelte-1wuxqa6");
-	      add_location(div10, file$n, 175, 8, 6756);
+	      add_location(div10, file$n, 176, 8, 6798);
 	      attr_dev(h31, "class", "svelte-1wuxqa6");
-	      add_location(h31, file$n, 203, 10, 7802);
+	      add_location(h31, file$n, 204, 10, 7844);
 	      attr_dev(p6, "class", "svelte-1wuxqa6");
-	      add_location(p6, file$n, 204, 10, 7833);
+	      add_location(p6, file$n, 205, 10, 7875);
 	      attr_dev(div11, "class", "description svelte-1wuxqa6");
-	      add_location(div11, file$n, 202, 8, 7766);
+	      add_location(div11, file$n, 203, 8, 7808);
 	      attr_dev(h32, "class", "svelte-1wuxqa6");
-	      add_location(h32, file$n, 207, 10, 7945);
+	      add_location(h32, file$n, 208, 10, 7987);
 	      attr_dev(ul0, "class", "svelte-1wuxqa6");
-	      add_location(ul0, file$n, 208, 10, 7974);
+	      add_location(ul0, file$n, 209, 10, 8016);
 	      attr_dev(div12, "class", "platforms svelte-1wuxqa6");
-	      add_location(div12, file$n, 206, 8, 7911);
+	      add_location(div12, file$n, 207, 8, 7953);
 	      attr_dev(h33, "class", "svelte-1wuxqa6");
-	      add_location(h33, file$n, 215, 10, 8257);
+	      add_location(h33, file$n, 216, 10, 8299);
 	      attr_dev(ul1, "class", "svelte-1wuxqa6");
-	      add_location(ul1, file$n, 216, 10, 8284);
+	      add_location(ul1, file$n, 217, 10, 8326);
 	      attr_dev(div13, "class", "methods svelte-1wuxqa6");
-	      add_location(div13, file$n, 214, 8, 8225);
+	      add_location(div13, file$n, 215, 8, 8267);
 	      attr_dev(h34, "class", "svelte-1wuxqa6");
-	      add_location(h34, file$n, 223, 10, 8554);
+	      add_location(h34, file$n, 224, 10, 8596);
 	      attr_dev(ul2, "class", "svelte-1wuxqa6");
-	      add_location(ul2, file$n, 224, 10, 8624);
+	      add_location(ul2, file$n, 225, 10, 8666);
 	      attr_dev(div14, "class", "source svelte-1wuxqa6");
-	      add_location(div14, file$n, 222, 8, 8523);
+	      add_location(div14, file$n, 223, 8, 8565);
 	      attr_dev(h35, "class", "svelte-1wuxqa6");
-	      add_location(h35, file$n, 241, 10, 9629);
+	      add_location(h35, file$n, 242, 10, 9671);
 	      attr_dev(ul3, "class", "svelte-1wuxqa6");
-	      add_location(ul3, file$n, 242, 10, 9718);
+	      add_location(ul3, file$n, 243, 10, 9760);
 	      attr_dev(div15, "class", "source-category svelte-1wuxqa6");
-	      add_location(div15, file$n, 240, 8, 9589);
+	      add_location(div15, file$n, 241, 8, 9631);
 	      attr_dev(h36, "class", "svelte-1wuxqa6");
-	      add_location(h36, file$n, 249, 10, 9989);
+	      add_location(h36, file$n, 250, 10, 10031);
 	      attr_dev(a, "href", a_href_value =
 	      /*$tooltip*/
 	      ctx[10].tp.attributionUrl);
 	      attr_dev(a, "target", "_blank");
 	      attr_dev(a, "class", "no-float svelte-1wuxqa6");
-	      add_location(a, file$n, 250, 10, 10013);
+	      add_location(a, file$n, 251, 10, 10055);
 	      attr_dev(div16, "class", "link svelte-1wuxqa6");
-	      add_location(div16, file$n, 248, 8, 9960);
+	      add_location(div16, file$n, 249, 8, 10002);
 	      attr_dev(div17, "class", "scroll-wrapper svelte-1wuxqa6");
-	      add_location(div17, file$n, 123, 6, 4114);
+	      add_location(div17, file$n, 124, 6, 4156);
 	      attr_dev(div18, "class", "content svelte-1wuxqa6");
 	      set_style(div18, "top",
 	      /*contentTop*/
 	      ctx[6] + "px");
 	      set_style(div18, "margin", "0px " + (
 	      /*$tooltip*/
-	      ctx[10].tp.rSmiTot / 2 +
+	      ctx[10].tp.rSmiTot / 3 +
 	      /*offset*/
 	      ctx[11].left) + "px");
 	      add_render_callback(function () {
@@ -46518,7 +46519,7 @@ var app = (function () {
 	          ctx[26].call(div18)
 	        );
 	      });
-	      add_location(div18, file$n, 119, 4, 3930);
+	      add_location(div18, file$n, 120, 4, 3972);
 	      attr_dev(div19, "class", "tooltip svelte-1wuxqa6");
 	      set_style(div19, "left",
 	      /*left*/
@@ -46958,7 +46959,7 @@ var app = (function () {
 	      1024) {
 	        set_style(div18, "margin", "0px " + (
 	        /*$tooltip*/
-	        ctx[10].tp.rSmiTot / 2 +
+	        ctx[10].tp.rSmiTot / 3 +
 	        /*offset*/
 	        ctx[11].left) + "px");
 	      }
@@ -47060,7 +47061,7 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
-	} // (141:16) {:else}
+	} // (142:16) {:else}
 
 
 	function create_else_block_3(ctx) {
@@ -47081,11 +47082,11 @@ var app = (function () {
 	    block: block,
 	    id: create_else_block_3.name,
 	    type: "else",
-	    source: "(141:16) {:else}",
+	    source: "(142:16) {:else}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (135:73) 
+	} // (136:73) 
 
 
 	function create_if_block_9(ctx) {
@@ -47141,11 +47142,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_9.name,
 	    type: "if",
-	    source: "(135:73) ",
+	    source: "(136:73) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (133:74) 
+	} // (134:74) 
 
 
 	function create_if_block_8(ctx) {
@@ -47164,7 +47165,7 @@ var app = (function () {
 	      span = element("span");
 	      span.textContent = "(approx.)";
 	      attr_dev(span, "class", "small svelte-1wuxqa6");
-	      add_location(span, file$n, 133, 52, 4734);
+	      add_location(span, file$n, 134, 52, 4776);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, t0, anchor);
@@ -47190,11 +47191,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_8.name,
 	    type: "if",
-	    source: "(133:74) ",
+	    source: "(134:74) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (131:16) {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}
+	} // (132:16) {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}
 
 
 	function create_if_block_7(ctx) {
@@ -47213,7 +47214,7 @@ var app = (function () {
 	      span = element("span");
 	      span.textContent = "(approx.)";
 	      attr_dev(span, "class", "small svelte-1wuxqa6");
-	      add_location(span, file$n, 131, 54, 4570);
+	      add_location(span, file$n, 132, 54, 4612);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, t0, anchor);
@@ -47239,11 +47240,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_7.name,
 	    type: "if",
-	    source: "(131:16) {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}",
+	    source: "(132:16) {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (138:18) {:else}
+	} // (139:18) {:else}
 
 
 	function create_else_block_2(ctx) {
@@ -47297,11 +47298,11 @@ var app = (function () {
 	    block: block,
 	    id: create_else_block_2.name,
 	    type: "else",
-	    source: "(138:18) {:else}",
+	    source: "(139:18) {:else}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (136:18) {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}
+	} // (137:18) {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}
 
 
 	function create_if_block_10(ctx) {
@@ -47335,11 +47336,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_10.name,
 	    type: "if",
-	    source: "(136:18) {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}",
+	    source: "(137:18) {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (170:10) {#if (scoreQuestionsExpanded)}
+	} // (171:10) {#if (scoreQuestionsExpanded)}
 
 
 	function create_if_block_6(ctx) {
@@ -47360,7 +47361,7 @@ var app = (function () {
 	      div = element("div");
 	      create_component(scorequestions.$$.fragment);
 	      attr_dev(div, "class", "store-questions-wrapper svelte-1wuxqa6");
-	      add_location(div, file$n, 170, 12, 6580);
+	      add_location(div, file$n, 171, 12, 6622);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47409,11 +47410,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_6.name,
 	    type: "if",
-	    source: "(170:10) {#if (scoreQuestionsExpanded)}",
+	    source: "(171:10) {#if (scoreQuestionsExpanded)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (180:10) {:else}
+	} // (181:10) {:else}
 
 
 	function create_else_block_1(ctx) {
@@ -47474,25 +47475,25 @@ var app = (function () {
 	      span5 = element("span");
 	      span5.textContent = "Reddit";
 	      attr_dev(span0, "class", "smi-score facebook svelte-1wuxqa6");
-	      add_location(span0, file$n, 182, 16, 6950);
+	      add_location(span0, file$n, 183, 16, 6992);
 	      attr_dev(span1, "class", "smi-label svelte-1wuxqa6");
-	      add_location(span1, file$n, 183, 16, 7045);
+	      add_location(span1, file$n, 184, 16, 7087);
 	      attr_dev(li0, "class", "svelte-1wuxqa6");
-	      add_location(li0, file$n, 181, 14, 6929);
+	      add_location(li0, file$n, 182, 14, 6971);
 	      attr_dev(span2, "class", "smi-score twitter svelte-1wuxqa6");
-	      add_location(span2, file$n, 186, 16, 7140);
+	      add_location(span2, file$n, 187, 16, 7182);
 	      attr_dev(span3, "class", "smi-label svelte-1wuxqa6");
-	      add_location(span3, file$n, 187, 16, 7233);
+	      add_location(span3, file$n, 188, 16, 7275);
 	      attr_dev(li1, "class", "svelte-1wuxqa6");
-	      add_location(li1, file$n, 185, 14, 7119);
+	      add_location(li1, file$n, 186, 14, 7161);
 	      attr_dev(span4, "class", "smi-score reddit svelte-1wuxqa6");
-	      add_location(span4, file$n, 190, 16, 7327);
+	      add_location(span4, file$n, 191, 16, 7369);
 	      attr_dev(span5, "class", "smi-label svelte-1wuxqa6");
-	      add_location(span5, file$n, 191, 16, 7418);
+	      add_location(span5, file$n, 192, 16, 7460);
 	      attr_dev(li2, "class", "svelte-1wuxqa6");
-	      add_location(li2, file$n, 189, 14, 7306);
+	      add_location(li2, file$n, 190, 14, 7348);
 	      attr_dev(ul, "class", "svelte-1wuxqa6");
-	      add_location(ul, file$n, 180, 12, 6910);
+	      add_location(ul, file$n, 181, 12, 6952);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, ul, anchor);
@@ -47545,11 +47546,11 @@ var app = (function () {
 	    block: block,
 	    id: create_else_block_1.name,
 	    type: "else",
-	    source: "(180:10) {:else}",
+	    source: "(181:10) {:else}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (178:10) {#if ($tooltip.tp.smiPending)}
+	} // (179:10) {#if ($tooltip.tp.smiPending)}
 
 
 	function create_if_block_5(ctx) {
@@ -47559,7 +47560,7 @@ var app = (function () {
 	      p = element("p");
 	      p.textContent = "pending";
 	      attr_dev(p, "class", "svelte-1wuxqa6");
-	      add_location(p, file$n, 178, 12, 6865);
+	      add_location(p, file$n, 179, 12, 6907);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p, anchor);
@@ -47573,11 +47574,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_5.name,
 	    type: "if",
-	    source: "(178:10) {#if ($tooltip.tp.smiPending)}",
+	    source: "(179:10) {#if ($tooltip.tp.smiPending)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (197:8) {#if ($tooltip.tp.imageUrl)}
+	} // (198:8) {#if ($tooltip.tp.imageUrl)}
 
 
 	function create_if_block_4$1(ctx) {
@@ -47605,11 +47606,11 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-1wuxqa6");
-	      add_location(img, file$n, 198, 12, 7604);
+	      add_location(img, file$n, 199, 12, 7646);
 	      attr_dev(p, "class", "svelte-1wuxqa6");
-	      add_location(p, file$n, 199, 12, 7694);
+	      add_location(p, file$n, 200, 12, 7736);
 	      attr_dev(div, "class", "image svelte-1wuxqa6");
-	      add_location(div, file$n, 197, 10, 7572);
+	      add_location(div, file$n, 198, 10, 7614);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47649,11 +47650,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$1.name,
 	    type: "if",
-	    source: "(197:8) {#if ($tooltip.tp.imageUrl)}",
+	    source: "(198:8) {#if ($tooltip.tp.imageUrl)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (210:12) {#each $tooltip.tp.platforms as platform (platform)}
+	} // (211:12) {#each $tooltip.tp.platforms as platform (platform)}
 
 
 	function create_each_block_3(key_1, ctx) {
@@ -47687,7 +47688,7 @@ var app = (function () {
 	    c: function create() {
 	      li = element("li");
 	      attr_dev(li, "class", "card svelte-1wuxqa6");
-	      add_location(li, file$n, 210, 14, 8058);
+	      add_location(li, file$n, 211, 14, 8100);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -47719,11 +47720,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_3.name,
 	    type: "each",
-	    source: "(210:12) {#each $tooltip.tp.platforms as platform (platform)}",
+	    source: "(211:12) {#each $tooltip.tp.platforms as platform (platform)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (218:12) {#each $tooltip.tp.methods as method (method)}
+	} // (219:12) {#each $tooltip.tp.methods as method (method)}
 
 
 	function create_each_block_2(key_1, ctx) {
@@ -47757,7 +47758,7 @@ var app = (function () {
 	    c: function create() {
 	      li = element("li");
 	      attr_dev(li, "class", "card svelte-1wuxqa6");
-	      add_location(li, file$n, 218, 14, 8362);
+	      add_location(li, file$n, 219, 14, 8404);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -47789,11 +47790,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_2.name,
 	    type: "each",
-	    source: "(218:12) {#each $tooltip.tp.methods as method (method)}",
+	    source: "(219:12) {#each $tooltip.tp.methods as method (method)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (234:16) {:else}
+	} // (235:16) {:else}
 
 
 	function create_else_block(ctx) {
@@ -47831,11 +47832,11 @@ var app = (function () {
 	    block: block,
 	    id: create_else_block.name,
 	    type: "else",
-	    source: "(234:16) {:else}",
+	    source: "(235:16) {:else}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (232:56) 
+	} // (233:56) 
 
 
 	function create_if_block_3$2(ctx) {
@@ -47877,11 +47878,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$2.name,
 	    type: "if",
-	    source: "(232:56) ",
+	    source: "(233:56) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (230:109) 
+	} // (231:109) 
 
 
 	function create_if_block_2$2(ctx) {
@@ -47939,11 +47940,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$2.name,
 	    type: "if",
-	    source: "(230:109) ",
+	    source: "(231:109) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (228:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}
+	} // (229:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}
 
 
 	function create_if_block_1$3(ctx) {
@@ -48005,11 +48006,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$3.name,
 	    type: "if",
-	    source: "(228:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}",
+	    source: "(229:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (226:12) {#each $tooltip.tp.source as source, i (source)}
+	} // (227:12) {#each $tooltip.tp.source as source, i (source)}
 
 
 	function create_each_block_1$2(key_1, ctx) {
@@ -48077,7 +48078,7 @@ var app = (function () {
 	      if_block.c();
 	      t = space();
 	      attr_dev(li, "class", "card svelte-1wuxqa6");
-	      add_location(li, file$n, 226, 14, 8704);
+	      add_location(li, file$n, 227, 14, 8746);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48116,11 +48117,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_1$2.name,
 	    type: "each",
-	    source: "(226:12) {#each $tooltip.tp.source as source, i (source)}",
+	    source: "(227:12) {#each $tooltip.tp.source as source, i (source)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (244:12) {#each $tooltip.tp.sourceCategory as cat (cat)}
+	} // (245:12) {#each $tooltip.tp.sourceCategory as cat (cat)}
 
 
 	function create_each_block$6(key_1, ctx) {
@@ -48154,7 +48155,7 @@ var app = (function () {
 	    c: function create() {
 	      li = element("li");
 	      attr_dev(li, "class", "card svelte-1wuxqa6");
-	      add_location(li, file$n, 244, 14, 9797);
+	      add_location(li, file$n, 245, 14, 9839);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48186,7 +48187,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$6.name,
 	    type: "each",
-	    source: "(244:12) {#each $tooltip.tp.sourceCategory as cat (cat)}",
+	    source: "(245:12) {#each $tooltip.tp.sourceCategory as cat (cat)}",
 	    ctx: ctx
 	  });
 	  return block;
