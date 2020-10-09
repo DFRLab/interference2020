@@ -1,7 +1,7 @@
 import SpotTooltip from '../components/SpotTooltip.svelte';
 import { get } from 'svelte/store';
 
-export function spottooltipable(node, { data, target, left, top }) {
+export function spottooltipable(node, { data, target, top }) {
   let component;
 
   function handleMouseleave(e) {
@@ -12,10 +12,10 @@ export function spottooltipable(node, { data, target, left, top }) {
   function handleMouseenter(e) {
     if (!target) return;
     
-    const elem = get(target);
+    const { left } = node.getBoundingClientRect();
 
     component = new SpotTooltip({
-      target: elem,
+      target,
       props: {
         data,
         x: left, 

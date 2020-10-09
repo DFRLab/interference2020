@@ -15,7 +15,7 @@
 
 <g class="spot"
     transform="translate({$x} 0)"
-    use:spottooltipable={{data: spot, target: drawWrapper, left: $x, top: $panelHeight + 20}}>
+    use:spottooltipable={{data: spot, target: $drawWrapper, top: $panelHeight + 20}}>
   <circle cx="0" cy="0" r="5"></circle>
   <circle class="bait" cx="0" cy="0" r="10"></circle>
 </g>

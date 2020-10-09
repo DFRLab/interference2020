@@ -49,7 +49,7 @@
   .spot-tooltip {
     margin-right: 1rem;
     position: absolute;
-    z-index: 10000;
+    z-index: 1000000000;
   }
 
   .content {
