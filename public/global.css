@@ -63,6 +63,7 @@ html, body {
 body {
   background-color: var(--bg);
   position: relative;
+  -webkit-text-size-adjust: 100%;
   pointer-events: all;
 }
 

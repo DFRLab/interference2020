@@ -135,7 +135,7 @@
       rSmiFbShare: $smiShareRScale(d.smiFacebookShare),
       rSmiTwShare: $smiShareRScale(d.smiTwitterShare),
       rSmiReShare: $smiShareRScale(d.smiRedditShare),
-      fy: d.smiPending ? $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20 : $smiTotalYScale(d.smiTotal),
+      fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(d.smiTotal),
       outOfTimeRange: $timeScale(d.attributionDate) < $timeScale.range()[0] || $timeScale(d.attributionDate) > $timeScale.range()[1]
     }))
     .sort((a, b) => sortConsistently(a, b, 'rSmiTot', 'id'));

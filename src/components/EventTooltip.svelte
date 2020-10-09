@@ -257,11 +257,18 @@
 
 <style>
   .tooltip {
-    width: 21%;
-    min-width: 550px;
+    width: 70%;
+    /* min-width: 550px; */
     font-family: var(--font-02);
     position: absolute;
     z-index: 10000;
+  }
+
+  @media (min-width: 800px) {
+    .tooltip {
+      width: 21%;
+      min-width: 550px;
+    }
   }
 
   .content {
