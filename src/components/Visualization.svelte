@@ -7,6 +7,7 @@
   import loadData from '../utils/loadData';
   import loadMapData from '../utils/loadMapData';
   import loadCoronaData from '../utils/loadCoronaData';
+  import loadGoogleTrendsData from '../utils/loadGoogleTrendsData';
   import { setScales } from '../utils/scales';
   import {
     width,
@@ -97,8 +98,17 @@
         source: 'The New York Times',
         data: await loadCoronaData(),
         selected: false
+      },
+      {
+        id: 'gt_voter_fraud',
+        name: 'Voter Fraud',
+        source: 'Google Trends',
+        data: await loadGoogleTrendsData('voter fraud'),
+        selected: false
       }
     ];
+
+    console.log($contextData[1].data)
 
     preloadImages(data);
 
