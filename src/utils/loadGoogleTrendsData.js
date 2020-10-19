@@ -2,7 +2,11 @@ import { googleTrendsApiPath } from '../inputs/dataPaths';
 
 const loadGoogleTrendsData = async (keyword) => {
   const response = await fetch(`${googleTrendsApiPath}${encodeURIComponent(keyword)}`);
-  return(response.json());
+  const data = (await response.json()).map((d) => ({
+    ...d,
+    date: new Date(d.time * 1000)
+  }));
+  return(data);
 };
 
 export default loadGoogleTrendsData;

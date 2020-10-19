@@ -25,7 +25,7 @@
 
   $: if (data) {
     yScale = scaleLog()
-      .domain([1, max(data.map((d) => d.cases))])
+      .domain([1, max(data, (d) => d.cases)])
       .range([$panelHeight - margin.bottom, margin.top * 0.7]);
 
     area = (type, data) => d3area()

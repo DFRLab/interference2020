@@ -108,8 +108,6 @@
       }
     ];
 
-    console.log($contextData[1].data)
-
     preloadImages(data);
 
     // apply filters from URL

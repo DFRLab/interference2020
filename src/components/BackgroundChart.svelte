@@ -5,6 +5,7 @@
   import { margin } from '../stores/dimensions';
 
   import CoronaChart from './CoronaChart.svelte';
+  import GoogleTrendsChart from './GoogleTrendsChart.svelte';
 </script>
 
 <g class="background-chart">
@@ -13,6 +14,11 @@
       <CoronaChart data={dataset.data}
                    margin={$margin}
                    showLegend={!$originalTimeDomain} />
+    {/if}
+    {#if (/^gt_/.test(dataset.id))}
+      <GoogleTrendsChart data={dataset.data}
+                         margin={$margin}
+                         showLegend={!$originalTimeDomain} />
     {/if}
   {/each}
 </g>
