@@ -63,7 +63,7 @@
 <style>
   path {
     stroke: none;
-    opacity: 0.2;
+    opacity: 0.3;
     fill: var(--usa-blue);
   }
 

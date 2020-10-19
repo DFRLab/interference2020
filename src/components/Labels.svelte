@@ -88,7 +88,7 @@
 
   .time-scale text.bg {
     stroke: var(--bg);
-    stroke-width: 0.25rem;
+    stroke-width: 0.1rem;
     stroke-opacity: 0.8;
     fill: var(--bg);
   }

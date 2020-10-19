@@ -17,7 +17,7 @@
   function setOpacity(selected, hovered, extraFaint) {
     if (extraFaint) return 0.2 / 3 / 2;
 
-    let opacity = 0.5 / source.disinformantNation.length;
+    let opacity = 0.35 / source.disinformantNation.length;
 
     if (selected === 'selected' || hovered === 'selected') {
       opacity = 0.95;
