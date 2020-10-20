@@ -17,8 +17,7 @@
     {/if}
     {#if (/^gt_/.test(dataset.id))}
       <GoogleTrendsChart data={dataset.data}
-                         margin={$margin}
-                         showLegend={!$originalTimeDomain} />
+                         margin={$margin} />
     {/if}
   {/each}
 </g>

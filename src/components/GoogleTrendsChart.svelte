@@ -17,7 +17,7 @@
     bottom: 0,
     left: 20
   };
-  export let showLegend = true;
+  // export let showLegend = true;
 
   const commaFormat = format(',');
 
