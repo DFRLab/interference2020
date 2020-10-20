@@ -101,7 +101,7 @@
       },
       {
         id: 'gt_voter_fraud',
-        name: 'Search: Voter Fraud',
+        name: '"Voter Fraud" search',
         source: 'Google Trends',
         data: await loadGoogleTrendsData('voter fraud'),
         selected: false
