@@ -42,7 +42,13 @@ export const haveOverlap = (filter, arr) =>
 export const withinRange = (arr, num) => num >= arr[0] && num <= arr[1];
 
 // check, if a search string (filter) is included in a string
-export const includesTextSearch = (filter, s) => s.indexOf(filter.toUpperCase()) > -1;
+export const includesTextSearch = (filter, s) => {
+  const filterArr = filter.toLowerCase().split(' or ');
+  if (filterArr.length === 0) return true;
+  return filterArr.some((f) => {
+    return s.indexOf(f) > -1;
+  });
+};
 
 // check if case id filter is set and if id is matching
 export const isCaseId = (filter, id) => filter === undefined ? true : (filter === id);

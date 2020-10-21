@@ -11,7 +11,7 @@ export const urlFromFilters = (disinformantNations,
                                contextData,
                                caseId = '') => {
   const params = {
-    ts: textSearch,
+    ts: encodeURIComponent(textSearch),
     as: [attributionScores[0], attributionScores[1]].join(';'),
     f: filtersToHex([disinformantNations, platforms, methods, sources, sourceCategories, contextData]),
     id: caseId
@@ -43,7 +43,7 @@ export const parseUrl = (hash) => {
     sourceCategories: binaryToBool(hexToBinary(sourceCategories)),
     contextData: binaryToBool(hexToBinary(contextData)),
     caseId: caseId === '' ? undefined : +caseId,
-    textSearch,
+    textSearch: decodeURIComponent(textSearch),
     attributionScores: attributionScores.split(';').map((d) => +d)
   };
 }; 

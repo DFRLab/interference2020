@@ -53,7 +53,7 @@
 
   function highlight(s) {
     if (!$textSearchFilter || $textSearchFilter === '') return s;
-    return s.replace(new RegExp($textSearchFilter, 'gi'), (match) => `<span class="highlighted">${match}</span>`);
+    return s.replace(new RegExp($textSearchFilter.toLowerCase().split(' or ').join('|'), 'gi'), (match) => `<span class="highlighted">${match}</span>`);
   }
 
   $: if (showTooltip) {
