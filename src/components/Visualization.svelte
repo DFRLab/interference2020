@@ -65,7 +65,7 @@
   import Table from './Table.svelte';
 
   const tf = timeFormat('%B %d, %Y');
-  const observeDays = 0;
+  const observeDays = 3;
 
   let data, timePoints;
 
@@ -74,7 +74,7 @@
     data = (await loadData())
             .map((d) => ({
               ...d,
-              recentylAdded: Math.ceil(((new Date()) - d.timestamp) / (1000 * 60 * 60 * 24)) <= observeDays,
+              recentlyAdded: Math.ceil(((new Date()) - d.timestamp) / (1000 * 60 * 60 * 24)) <= observeDays,
               search: [d.shortTitle, d.shortDescription, d.platforms, d.methods, d.sourceNation, d.source, d.sourceCategory].flat().join('__').toLowerCase(),
               show: false
             }));
