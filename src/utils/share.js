@@ -6,6 +6,7 @@ export const urlFromFilters = (disinformantNations,
                                methods,
                                sources,
                                sourceCategories,
+                               tags,
                                attributionScores,
                                textSearch,
                                contextData,
@@ -13,7 +14,7 @@ export const urlFromFilters = (disinformantNations,
   const params = {
     ts: encodeURIComponent(textSearch),
     as: [attributionScores[0], attributionScores[1]].join(';'),
-    f: filtersToHex([disinformantNations, platforms, methods, sources, sourceCategories, contextData]),
+    f: filtersToHex([disinformantNations, platforms, methods, sources, sourceCategories, tags, contextData]),
     id: caseId
   };
 
@@ -33,7 +34,7 @@ export const binaryToBool = (binary) => binary.split('').map((d) => d === '0' ? 
 
 export const parseUrl = (hash) => {
   const s = hash.substring(1);
-  const [ disinformantNations, platforms, methods, sources, sourceCategories, contextData, caseId, textSearch, attributionScores] = s.split('-');
+  const [ disinformantNations, platforms, methods, sources, sourceCategories, tags, contextData, caseId, textSearch, attributionScores] = s.split('-');
 
   return {
     disinformantNations: binaryToBool(hexToBinary(disinformantNations)),
@@ -41,6 +42,7 @@ export const parseUrl = (hash) => {
     methods: binaryToBool(hexToBinary(methods)),
     sources: binaryToBool(hexToBinary(sources)),
     sourceCategories: binaryToBool(hexToBinary(sourceCategories)),
+    tags: binaryToBool(hexToBinary(tags)),
     contextData: binaryToBool(hexToBinary(contextData)),
     caseId: caseId === '' ? undefined : +caseId,
     textSearch: decodeURIComponent(textSearch),

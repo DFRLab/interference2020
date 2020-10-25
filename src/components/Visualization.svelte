@@ -34,7 +34,8 @@
     textSearchFilter,
     originalTimeDomain,
     contextData,
-    caseIdFilter } from '../stores/filters';
+    caseIdFilter,
+    tagFilter } from '../stores/filters';
   import { haveOverlap, withinRange, includesTextSearch, isCaseId, preloadImages } from '../utils/misc';
   import { selected } from '../stores/eventSelections';
   import { drawWrapper } from '../stores/elements';
@@ -88,8 +89,9 @@
     methodFilter.init(data, 'methods');
     sourceFilter.init(data, 'sourceFilter');
     sourceCategoryFilter.init(data, 'sourceCategory');
+    tagFilter.init(data, 'tags');
     $attributionScoreFilter = attributionScoreDef;
-
+    
     // get context datasets
     $contextData = [
       {
@@ -119,6 +121,7 @@
       methodFilter.applyBoolArray(urlFilters.methods);
       sourceFilter.applyBoolArray(urlFilters.sources);
       sourceCategoryFilter.applyBoolArray(urlFilters.sourceCategories);
+      tagFilter.applyBoolArray(urlFilters.tags);
       contextData.applyBoolArray(urlFilters.contextData);
       $attributionScoreFilter = urlFilters.attributionScores;
       $textSearchFilter = urlFilters.textSearch;
@@ -188,6 +191,7 @@
               && haveOverlap($methodFilter, d.methods)
               && haveOverlap($sourceFilter, d.sourceFilter)
               && haveOverlap($sourceCategoryFilter, d.sourceCategory)
+              && haveOverlap($tagFilter, d.tags)
               && includesTextSearch($textSearchFilter, d.search)
               && withinRange($attributionScoreFilter, d.attributionScore)
               && isCaseId($caseIdFilter, d.id)

@@ -11,6 +11,7 @@
     methodFilter,
     sourceFilter,
     sourceCategoryFilter,
+    tagFilter,
     textSearchFilter,
     selectAllFilters} from '../stores/filters';
   import { maxScores } from '../inputs/scores';
@@ -48,6 +49,7 @@
       case 'method': methodFilter.selectOne(item); break;
       case 'source': sourceFilter.selectOne(item); break;
       case 'sourceCategory': sourceCategoryFilter.selectOne(item); break;
+      case 'tag': tagFilter.selectOne(item); break;
     }
   }
 
@@ -204,6 +206,16 @@
           <h3>Description</h3>
           <p>{@html highlight($tooltip.tp.shortDescription)}</p>
         </div>
+        {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
+          <div class="tags">
+            <h3>Tags</h3>
+            <ul>
+              {#each $tooltip.tp.tags as tag (tag)}
+                <li class="card" on:click|self={() => handleLiClick('tag', tag)}>{@html highlight(tag)}</li>
+              {/each}
+            </ul>
+          </div>
+        {/if}
         <div class="platforms">
           <h3>Platforms</h3>
           <ul>

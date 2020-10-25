@@ -59,6 +59,8 @@ export const sourceFilter = createInclusiveFilter();
 
 export const sourceCategoryFilter = createInclusiveFilter();
 
+export const tagFilter = createInclusiveFilter();
+
 export const attributionScoreFilter = createRangeFilter();
 export const attributionScoreDef = [0, 18];
 
@@ -68,6 +70,7 @@ export const unselectAllFilters = (disinformantNation = true) => {
   methodFilter.unselectAll();
   sourceFilter.unselectAll();
   sourceCategoryFilter.unselectAll();
+  tagFilter.unselectAll();
   attributionScoreFilter.set(attributionScoreDef);
 };
 
@@ -77,6 +80,7 @@ export const selectAllFilters = (disinformantNation = true) => {
   methodFilter.selectAll();
   sourceFilter.selectAll();
   sourceCategoryFilter.selectAll();
+  tagFilter.selectAll();
   attributionScoreFilter.set(attributionScoreDef);
   textSearchFilter.reset();
   caseIdFilter.set(undefined);

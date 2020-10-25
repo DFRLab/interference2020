@@ -70,7 +70,8 @@ const loadData = async () => {
       attribution_methodology: +d.attribution_methodology,
       attribution_open_source: +d.attribution_open_source,
       attribution_acknowledge_limitations: +d.attribution_acknowledge_limitations,
-      attribution_corroboration: +d.attribution_corroboration
+      attribution_corroboration: +d.attribution_corroboration,
+      tags: splitString(d.tags)
     };
   });
 
