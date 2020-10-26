@@ -107,6 +107,13 @@
         source: 'Google Trends',
         data: await loadGoogleTrendsData('voter fraud'),
         selected: false
+      },
+      {
+        id: 'gt_disinformation',
+        name: '"Disinformation" search',
+        source: 'Google Trends',
+        data: await loadGoogleTrendsData('disinformation'),
+        selected: false
       }
     ];
 
