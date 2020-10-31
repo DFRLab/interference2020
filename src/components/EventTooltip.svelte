@@ -128,7 +128,7 @@
         <div class="title">
           <div class="title-top">
             <div class="title-dates">
-              <p class="no-break">{attributionTf($tooltip.tp.attributionDate)} | {@html highlight($tooltip.tp.disinformantAttribution)}</p>
+              <p>{attributionTf($tooltip.tp.attributionDate)} | {@html highlight($tooltip.tp.disinformantAttribution)}</p>
               <p>Active: 
                 {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}
                   {activityTf($tooltip.tp.startDate)} <span class="small">(approx.)</span>
