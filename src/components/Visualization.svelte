@@ -115,7 +115,8 @@
         data: await loadGoogleTrendsData('disinformation'),
         selected: false
       }
-    ];
+    ]
+    .filter((d) => d.data.length > 0);
 
     preloadImages(data);
 
