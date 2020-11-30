@@ -2,7 +2,7 @@ import { csv, timeParse } from 'd3';
 import { splitString, cleanCountries } from './misc';
 import { data as dataPath } from '../inputs/dataPaths';
 
-const parseTimestamp = timeParse('%m/%d/%Y %H:%M:%S %Z');
+const parseTimestamp = timeParse('%m/%d/%Y %H:%M %Z');
 const parseDate = timeParse('%m/%d/%Y');
 
 const loadData = async () => {

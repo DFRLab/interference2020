@@ -6,7 +6,6 @@ const loadGoogleTrendsData = async (keyword) => {
     ...d,
     date: new Date(d.time * 1000)
   }));
-console.log(data)
   return(data.filter((d) => !d.isPartial));
 };
 
