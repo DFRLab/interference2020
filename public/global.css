@@ -141,6 +141,36 @@ a:hover, span.pseudolink:hover {
   background-color: #e24545a1;
 }
 
+/* polarization */
+.pol-l {
+  background-color: #2e64a0;
+  opacity: 0.8;
+}
+
+.pol-ll {
+  background-color: #61a3de;
+  opacity: 0.8;
+}
+
+.pol-c {
+  background-color: #96659e;
+  opacity: 0.8;
+}
+
+.pol-lr {
+  background-color: #a15552;
+  opacity: 0.8;
+}
+
+.pol-r {
+  background-color: #ca0800;
+  opacity: 0.8;
+}
+
+.pol-undef {
+  background-color: #e0d3e2;
+  opacity: 0.8;
+}
 
 /* the landing page */
 .page-wrapper {

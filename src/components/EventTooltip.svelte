@@ -4,7 +4,7 @@
   import { width, panelHeight, controlsHeight } from '../stores/dimensions';
   import { tooltip } from '../stores/eventSelections';
   import { fade, slide } from 'svelte/transition';
-  import { timeFormat, format } from 'd3';
+  import { timeFormat } from 'd3';
   import { extractHostname } from '../utils/misc';
   import {
     platformFilter,
@@ -20,6 +20,8 @@
   import EventTooltipCross from './EventTooltipCross.svelte';
   import ScoreBar from './ScoreBar.svelte';
   import ScoreQuestions from './ScoreQuestions.svelte';
+  import ImpactStrip from './ImpactStrip.svelte';
+  import PolarizationLegend from './PolarizationLegend.svelte';
   import Share from './Share.svelte';
 
   const offset = {
@@ -32,7 +34,6 @@
 
   const attributionTf = timeFormat('%B %d, %Y');
   const activityTf = timeFormat('%B %Y');
-  const commaFormat = format(',');
 
   let elem;
   let tWidth, tHeight;
@@ -181,19 +182,19 @@
             <p>pending</p>
           {:else}
             <ul>
-              <li>
-                <span class="smi-score facebook">{commaFormat($tooltip.tp.smiFacebook)}</span>
-                <span class="smi-label">Facebook</span>
-              </li>
-              <li>
-                <span class="smi-score twitter">{commaFormat($tooltip.tp.smiTwitter)}</span>
-                <span class="smi-label">Twitter</span>
-              </li>
-              <li>
-                <span class="smi-score reddit">{commaFormat($tooltip.tp.smiReddit)}</span>
-                <span class="smi-label">Reddit</span>
-              </li>
+              <ImpactStrip value={$tooltip.tp.smiFacebook}
+                           polarization={$tooltip.tp.polarization}
+                           label="Facebook" />
+              <ImpactStrip value={$tooltip.tp.smiTwitter}
+                           polarization={$tooltip.tp.polarization}
+                           label="Twitter" />
+              <ImpactStrip value={$tooltip.tp.smiReddit}
+                           polarization={$tooltip.tp.polarization}
+                           label="Reddit" />
             </ul>
+            {#if ($tooltip.tp.polarization.fulfills10Articles || $tooltip.tp.polarization.fulfills25Percent)}
+              <PolarizationLegend />
+            {/if}
           {/if}
         </div>
         {#if ($tooltip.tp.imageUrl)}
@@ -426,26 +427,6 @@
     display: flex;
   }
 
-  .smi li {
-    margin: 0.2rem 0.3rem 0.2rem 0;
-    font-size: 0.8rem;
-  }
-
-  .smi-score {
-    padding: 0 0.2rem;
-    border: none;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-                0 2px 4px rgba(0,0,0,0.07);
-  }
-
-  .smi-label {
-    display: inline-block;
-    padding: 0 0.1rem;
-    border: none;
-    border-radius: 3px;
-  }
-
   a {
     text-decoration: none;
   }
@@ -456,11 +437,6 @@
 
   .small {
     font-size: 0.6rem;
-  }
-
-  .no-break {
-    word-break: keep-all;
-    white-space: nowrap;
   }
 
   .scroll-wrapper .image {

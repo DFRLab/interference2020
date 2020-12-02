@@ -92,21 +92,21 @@ const loadData = async () => {
           lr: +d.allsides_engagments_leanright,
           r: +d.allsides_engagments_right
         },
-        fb: {
+        facebook: {
           l: +d.allsides_engagments_left_facebook,
           ll: +d.allsides_engagments_leanleft_facebook,
           c: +d.allsides_engagments_center_facebook,
           lr: +d.allsides_engagments_leanright_facebook,
           r: +d.allsides_engagments_right_facebook
         },
-        tw: {
+        twitter: {
           l: +d.allsides_engagments_left_twitter,
           ll: +d.allsides_engagments_leanleft_twitter,
           c: +d.allsides_engagments_center_twitter,
           lr: +d.allsides_engagments_leanright_twitter,
           r: +d.allsides_engagments_right_twitter
         },
-        re: {
+        reddit: {
           l: +d.allsides_engagments_left_reddit,
           ll: +d.allsides_engagments_leanleft_reddit,
           c: +d.allsides_engagments_center_reddit,
