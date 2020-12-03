@@ -287,6 +287,7 @@
   .content {
     display: flex;
     flex-direction: column;
+    max-width: 550px;
     max-height: 60vh;
     color: var(--text-black);
     background-color: var(--bg);

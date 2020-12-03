@@ -61,7 +61,7 @@
        height={magnifierHeight}>
     <path d={line(leftPathData)} />
     <path d={line(rightPathData)} />
-    <text x={valueWidth / 2}
+    <text x={Math.max(15, valueWidth / 2)}
           y={yScale(1)}>
       {Math.round(engagementExplained * 100)}%
     </text>
