@@ -10,7 +10,8 @@
     attributionScoreDef,
     textSearchFilter,
     originalTimeDomain,
-    contextData } from '../stores/filters';
+    contextData,
+    highlightPolarization } from '../stores/filters';
   import { urlFromFilters } from '../utils/share';
 
   import Icon from 'svelte-awesome';
@@ -37,7 +38,8 @@
             $attributionScoreFilter,
             $textSearchFilter,
             $contextData,
-            caseId);
+            caseId,
+            $highlightPolarization);
 </script>
 
 <div class="share">

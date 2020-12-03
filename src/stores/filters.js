@@ -94,3 +94,5 @@ export const brushed = writable(false);
 export const originalTimeDomain = writable(null);
 
 export const caseIdFilter = writable();
+
+export const highlightPolarization = writable(false);

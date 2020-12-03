@@ -56,16 +56,18 @@
 
 <div class="polarization-strip"
      bind:clientWidth={width}>
-  <svg class="pol-magnifier"
-       width={width}
-       height={magnifierHeight}>
-    <path d={line(leftPathData)} />
-    <path d={line(rightPathData)} />
-    <text x={Math.max(15, valueWidth / 2)}
-          y={yScale(1)}>
-      {Math.round(engagementExplained * 100)}%
-    </text>
-  </svg>
+  {#if (width > 0)}
+    <svg class="pol-magnifier"
+         width={width}
+         height={magnifierHeight}>
+      <path d={line(leftPathData)} />
+      <path d={line(rightPathData)} />
+      <text x={Math.max(15, valueWidth / 2)}
+            y={yScale(1)}>
+        {Math.round(engagementExplained * 100)}%
+      </text>
+    </svg>
+  {/if}
   <div class="pol-layer-wrapper">
     {#each categories as category (category.id)}
       <div class="pol-layer pol-{category.id}"

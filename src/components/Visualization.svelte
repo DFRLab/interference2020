@@ -35,8 +35,15 @@
     originalTimeDomain,
     contextData,
     caseIdFilter,
-    tagFilter } from '../stores/filters';
-  import { haveOverlap, withinRange, includesTextSearch, isCaseId, preloadImages } from '../utils/misc';
+    tagFilter,
+    highlightPolarization } from '../stores/filters';
+  import {
+    haveOverlap,
+    withinRange,
+    includesTextSearch,
+    isCaseId,
+    showPolarization,
+    preloadImages } from '../utils/misc';
   import { selected } from '../stores/eventSelections';
   import { drawWrapper } from '../stores/elements';
   
@@ -134,6 +141,7 @@
       $attributionScoreFilter = urlFilters.attributionScores;
       $textSearchFilter = urlFilters.textSearch;
       $caseIdFilter = urlFilters.caseId;
+      $highlightPolarization = urlFilters.highlightPolarization;
     } 
   });
 
@@ -203,6 +211,7 @@
               && includesTextSearch($textSearchFilter, d.search)
               && withinRange($attributionScoreFilter, d.attributionScore)
               && isCaseId($caseIdFilter, d.id)
+              && showPolarization($highlightPolarization, d.polarization)
       }));
     }
 </script>

@@ -53,6 +53,12 @@ export const includesTextSearch = (filter, s) => {
 // check if case id filter is set and if id is matching
 export const isCaseId = (filter, id) => filter === undefined ? true : (filter === id);
 
+// check, if polarization data can be shown
+export const showPolarization = (filter, polarization) => {
+  if (!filter) return(true);
+  return(polarization.fulfills10Articles || polarization.fulfills25Percent);
+};
+
 // extract filter items from data
 export const extractFilterCategories = (data, name) =>
   uniq(data.map((d) => d[name]).flat());

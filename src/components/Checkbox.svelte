@@ -22,7 +22,7 @@
   } 
 
   input[type="checkbox"] {
-    display:none;
+    display: none;
     pointer-events: all;
   }
 
@@ -30,6 +30,7 @@
     display: block;
     width: 15px;
     height: 15px;
+    margin-top: 3px;
     margin-right: 0.4rem;
     border: 2px solid var(--usa-blue);
     border-radius: 3px;
