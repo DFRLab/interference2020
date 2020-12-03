@@ -8,4 +8,6 @@ export const attributionScoreScale = writable();
 
 export const centroidScale = writable();
 
+export const polarizationScale = writable();
+
 export const scaleFactor = readable(window.devicePixelRatio || 1);

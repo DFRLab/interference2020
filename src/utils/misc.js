@@ -1,6 +1,7 @@
 import { uniq } from 'lodash';
 import { mean, min, max } from 'd3';
 import { images } from '../inputs/dataPaths';
+import { categories } from '../inputs/polarization';
 
 // extract attribution date range from data
 export const getTimeRange = (data) => {
@@ -124,3 +125,16 @@ export const scrollTo = (targetId, collapsibleId) => {
   return(false);
 };
 window.scrollsmooth = scrollTo;
+
+// calculate average polarization using weights
+export const averagePolarization = (polarization) => {
+  const weightedEngagement = Object.keys(polarization).map((id) => {
+    const weight = categories.find((c) => c.id === id).weight;
+    return(weight * polarization[id]);
+  })
+  .reduce((acc, cur) => acc + cur);
+
+  const totalEngagement = Object.keys(polarization).map((id) => polarization[id]).reduce((acc, cur) => acc + cur);
+
+  return(weightedEngagement / totalEngagement);
+};

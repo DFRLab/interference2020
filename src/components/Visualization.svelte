@@ -22,7 +22,8 @@
     smiTotalYScale,
     smiTotalRScale,
     smiShareRScale,
-    attributionScoreScale } from '../stores/scales';
+    attributionScoreScale,
+    polarizationScale } from '../stores/scales';
   import {
     disinformantNationFilter,
     platformFilter,
@@ -57,7 +58,7 @@
     forceCenter,
     forceCollide,
     timeFormat } from 'd3';
-  import { sortConsistently } from '../utils/misc';
+  import { sortConsistently, averagePolarization } from '../utils/misc';
   import { parseUrl } from '../utils/share';
 
   import ToTop from './ToTop.svelte';
@@ -163,7 +164,8 @@
       rSmiTwShare: $smiShareRScale(d.smiTwitterShare),
       rSmiReShare: $smiShareRScale(d.smiRedditShare),
       fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(d.smiTotal),
-      outOfTimeRange: $timeScale(d.attributionDate) < $timeScale.range()[0] || $timeScale(d.attributionDate) > $timeScale.range()[1]
+      outOfTimeRange: $timeScale(d.attributionDate) < $timeScale.range()[0] || $timeScale(d.attributionDate) > $timeScale.range()[1],
+      polarizationColor: $polarizationScale(averagePolarization(d.polarization.general))
     }))
     .sort((a, b) => sortConsistently(a, b, 'rSmiTot', 'id'));
 

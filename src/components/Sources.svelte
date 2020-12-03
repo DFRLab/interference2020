@@ -6,7 +6,7 @@
   import { sortConsistently } from '../utils/misc';
   import { hovered as eHovered, selected as eSelected } from '../stores/eventSelections';
   import { hovered as cHovered } from '../stores/centroidSelections';
-  import { disinformantNationFilter, selectAllFilters, unselectAllFilters } from '../stores/filters';
+  import { disinformantNationFilter, selectAllFilters, unselectAllFilters, highlightPolarization } from '../stores/filters';
 
   import SourceLink from './SourceLink.svelte';
   import Centroid from './Centroid.svelte';
@@ -105,7 +105,8 @@
                             : ($eHovered
                                 ? 'background'
                                 : 'unselected')}
-                extraFaint={source.outOfTimeRange} />
+                extraFaint={source.outOfTimeRange}
+                showPolarizationColor={$highlightPolarization} />
   {/each}
   {#each centroids as [country, centroid]}
     <Centroid {centroid}

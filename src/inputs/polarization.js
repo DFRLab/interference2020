@@ -1,22 +1,27 @@
 export const categories = [
   {
     id: 'l',
-    name: 'left'
+    name: 'left',
+    weight: -2
   },
   {
     id: 'll',
-    name: 'leanleft'
+    name: 'leanleft',
+    weight: -1
   },
   {
     id: 'c',
-    name: 'center'
+    name: 'center',
+    weight: 0
   },
   {
     id: 'lr',
-    name: 'leanright'
+    name: 'leanright',
+    weight: 1
   },
   {
     id: 'r',
-    name: 'right'
+    name: 'right',
+    weight: 2
   },
 ];

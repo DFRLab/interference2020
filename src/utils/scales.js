@@ -4,8 +4,15 @@ import {
   smiTotalRScale,
   smiShareRScale,
   attributionScoreScale,
-  centroidScale } from '../stores/scales';
-import { usaRed } from '../utils/colors';
+  centroidScale,
+  polarizationScale } from '../stores/scales';
+import {
+  usaRed,
+  polBlue,
+  polLightBlue,
+  polPurple,
+  polLightRed,
+  polRed } from '../utils/colors';
 import {
   scaleTime,
   scaleLinear,
@@ -50,4 +57,9 @@ export const setScales = (data, width, minDim, maxDim, panelHeight, margin) => {
   centroidScale.set(scaleSqrt()
     .domain([0, max(casesPerCountry)])
     .range([maxDim * 0.0005, maxDim * 0.01]));
+
+  // polarization scale
+  polarizationScale.set(scaleLinear()
+    .domain([-2, 0, 2])
+    .range([polBlue, polPurple, polRed]));
 };
