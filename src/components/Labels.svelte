@@ -25,13 +25,13 @@
         <text>{tf(tick).replace('Jan 01, ', '')}</text>
       </g>
     {/each}
-    <g class="today" transform="translate({$timeScale(new Date())} 20)">
+    <!-- <g class="today" transform="translate({$timeScale(new Date())} 20)">
       <circle cx="0"
               cy="-20"
               r="5"></circle>
       <text class="bg">Today</text>
       <text>Today</text>
-    </g>
+    </g> -->
     <g class="time-scale-label" transform="translate({15 + $timeScale.range()[0] - $margin.left / 1.5} -15)">
       <path d="M0 0l{lineLength} 0"></path>
       <text class="bg"
