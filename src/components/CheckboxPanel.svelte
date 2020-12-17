@@ -17,7 +17,7 @@
     <Checkbox id="checkboxpanel-checkbox-polarization"
               checked={$highlightPolarization}
               on:click={() => handleClick('polarization')}>
-      <span>Highlight cases with polarization data</span>
+      <span>Polarization data filter</span>
     </Checkbox>
   </li>
 </ul>
@@ -39,7 +39,7 @@
 
   span {
     display: inline-block;
-    margin: 0 0 0 0.5rem;
+    margin: 0.15rem 0 0 0.5rem;
     font-family: var(--font-02);
     font-size: 0.8rem;
     color: var(--usa-blue);

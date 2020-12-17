@@ -6,7 +6,7 @@ export const categories = [
   },
   {
     id: 'll',
-    name: 'leanleft',
+    name: 'lean left',
     weight: -1
   },
   {
@@ -16,7 +16,7 @@ export const categories = [
   },
   {
     id: 'lr',
-    name: 'leanright',
+    name: 'lean right',
     weight: 1
   },
   {
