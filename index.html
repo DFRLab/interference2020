@@ -119,6 +119,9 @@
             The fixed timeframe, standardized Google dork formula, and opacity of the tools themselves means that relevant social media engagement data may be excluded. Therefore, the Attribution Impact should be treated as a rough estimate, most useful for comparing between cases.
           </p>
           <p>
+            The political leanings of 600+ media entities – using political data from the <a href="https://www.allsides.com/media-bias/media-bias-ratings" target="_blank">AllSides Media Bias Ratings</a> – was applied to the web links found in Attribution Impact. Since not all web links had matching AllSides data, the polarization data filter shows only cases where there were ten or more AllSides-matching articles and/or cases where 25 percent or more of articles matched with AllSides data. The stem lines on the polarization data filter are colored based on the mean political polarization of that case.
+          </p>
+          <p>
             It is the intention of the FIAT team to introduce additional dimensions of Attribution Impact as the tool evolves.
           </p>
           <h4 id="attribution-score">Attribution Score</h4>
@@ -210,6 +213,7 @@
             <li><strong>Short title</strong> (free text).</li>
             <li><strong>Short description</strong> (free text). One to three sentence description of the allegation, alleged activity, and attribution.</li>
             <li><strong>Link to attribution</strong> (link).</li>
+            <li>If the attribution is to Facebook and was removed by Facebook for coordinated inauthentic behavior, additional data is available. These variables are an updated version of Sima Basel and Matt Suiche’s <a href="https://si.ma/fb-cib/" target="_blank">OSINT analysis</a> of Facebook removals for coordinated inauthentic behavior. See Basel’s data <a href="https://github.com/simabasel/cib-data" target="_blank">compilation</a> for variables and definitions.</li>
           </ul>
           <h5 id="activity-attribution-date">When did the interference and attribution occur?</h5>
           <ul>
@@ -284,6 +288,7 @@
                 <li><strong>Twitter engagement</strong> (quantitative). Aggregate shares of a web link.</li>
                 <li><strong>Reddit engagement</strong> (quantitative). Aggregate shares and interactions of a web link.</li>
                 <li><strong>Total engagement</strong> (quantitative). Aggregate Facebook, Twitter, and Reddit engagement.</li>
+                <li><strong>Polarization</strong> (quantitative). Measures the political leaning of case-related articles using polarization data from the AllSides Media Bias Ratings. AllSides is a media technology company which provides multiple perspectives on news outlets. Articles from outlets with AllSides data were divided into five political categories: left, lean left, center, lean right, and right.</li>
               </ul>
             </li>
           </ul>
