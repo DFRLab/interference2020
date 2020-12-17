@@ -223,7 +223,7 @@
               && haveOverlap($tagFilter, d.tags)
               && includesTextSearch($textSearchFilter, d.search)
               && withinRange($attributionScoreFilter, d.attributionScore)
-              && withinRange($polarizationFilter, d.averagePolarization)
+              && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization)
               && isCaseId($caseIdFilter, d.id)
               && showPolarization($highlightPolarization, d.polarization)
               && showCib($highlightCib, d.cib)

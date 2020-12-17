@@ -40,7 +40,7 @@ export const haveOverlap = (filter, arr) =>
   filter.filter((d) => d.selected).map((d) => d.id).some((item) => arr.includes(item));
 
 // check, if a number is within a 2D range (given as array with length 2)
-export const withinRange = (arr, num) => num >= arr[0] && num <= arr[1];
+export const withinRange = (arr, num, bypass = false) => bypass ? true : (num >= arr[0] && num <= arr[1]);
 
 // check, if a search string (filter) is included in a string
 export const includesTextSearch = (filter, s) => {
