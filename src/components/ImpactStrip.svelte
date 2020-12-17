@@ -20,7 +20,7 @@
   <span class="smi-label">
     {label}
   </span>
-  {#if ((polarization.fulfills10Articles || polarization.fulfills25Percent) && value > 0)}
+  {#if (polarization && (polarization.fulfills10Articles || polarization.fulfills25Percent) && value > 0)}
     <PolarizationStrip polarization={polarization[label.toLowerCase()]}
                        smi={value}
                        valueWidth={valueWidth} />

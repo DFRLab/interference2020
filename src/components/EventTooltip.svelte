@@ -13,6 +13,7 @@
     sourceCategoryFilter,
     tagFilter,
     textSearchFilter,
+    highlightPolarization,
     selectAllFilters} from '../stores/filters';
   import { maxScores } from '../inputs/scores';
   import { images } from '../inputs/dataPaths';
@@ -184,16 +185,16 @@
           {:else}
             <ul>
               <ImpactStrip value={$tooltip.tp.smiFacebook}
-                           polarization={$tooltip.tp.polarization}
+                           polarization={$highlightPolarization ? $tooltip.tp.polarization : null}
                            label="Facebook" />
               <ImpactStrip value={$tooltip.tp.smiTwitter}
-                           polarization={$tooltip.tp.polarization}
+                           polarization={$highlightPolarization ? $tooltip.tp.polarization : null}
                            label="Twitter" />
               <ImpactStrip value={$tooltip.tp.smiReddit}
-                           polarization={$tooltip.tp.polarization}
+                           polarization={$highlightPolarization ? $tooltip.tp.polarization : null}
                            label="Reddit" />
             </ul>
-            {#if ($tooltip.tp.polarization.fulfills10Articles || $tooltip.tp.polarization.fulfills25Percent)}
+            {#if ($highlightPolarization && ($tooltip.tp.polarization.fulfills10Articles || $tooltip.tp.polarization.fulfills25Percent))}
               <PolarizationLegend />
             {/if}
           {/if}
