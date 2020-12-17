@@ -8,6 +8,7 @@ export const urlFromFilters = (disinformantNations,
                                sourceCategories,
                                tags,
                                attributionScores,
+                               polarization,
                                textSearch,
                                contextData,
                                caseId = '',
@@ -16,12 +17,13 @@ export const urlFromFilters = (disinformantNations,
   const params = {
     ts: encodeURIComponent(textSearch),
     as: [attributionScores[0], attributionScores[1]].join(';'),
+    pol: [polarization[0], polarization[1]].join(';'),
     f: filtersToHex([disinformantNations, platforms, methods, sources, sourceCategories, tags, contextData]),
     id: caseId,
     bool: filtersToBin([highlightPolarization, highlightCib])
   };
 
-  return `${baseUrl}/#${params.f}-${params.id}-${params.ts}-${params.as}-${params.bool}`;
+  return `${baseUrl}/#${params.f}-${params.id}-${params.ts}-${params.as}-${params.pol}-${params.bool}`;
 };
 
 export const filtersToHex = (arr) => {
@@ -42,7 +44,7 @@ export const binaryToBool = (binary) => binary.split('').map((d) => d === '0' ? 
 
 export const parseUrl = (hash) => {
   const s = hash.substring(1);
-  const [ disinformantNations, platforms, methods, sources, sourceCategories, tags, contextData, caseId, textSearch, attributionScores, bools] = s.split('-');
+  const [ disinformantNations, platforms, methods, sources, sourceCategories, tags, contextData, caseId, textSearch, attributionScores, polarization, bools] = s.split('-');
 
   const boolArray = bools.split('').map((d) => +d === 1 ? true : false);
 
@@ -57,6 +59,7 @@ export const parseUrl = (hash) => {
     caseId: caseId === '' ? undefined : +caseId,
     textSearch: decodeURIComponent(textSearch),
     attributionScores: attributionScores.split(';').map((d) => +d),
+    polarization: polarization.split(';').map((d) => +d),
     highlightPolarization: boolArray[0],
     highlightCib: boolArray[1]
   };

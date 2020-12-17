@@ -7,7 +7,7 @@
     sourceCategoryFilter,
     tagFilter,
     attributionScoreFilter,
-    attributionScoreDef,
+    polarizationFilter,
     textSearchFilter,
     originalTimeDomain,
     contextData,
@@ -37,6 +37,7 @@
             $sourceCategoryFilter,
             $tagFilter,
             $attributionScoreFilter,
+            $polarizationFilter,
             $textSearchFilter,
             $contextData,
             caseId,
@@ -65,6 +66,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 0.5rem 0 0;
     font-family: var(--font-02);
     font-size: 0.7rem;
     pointer-events: all;
@@ -72,6 +74,7 @@
 
   p {
     color: var(--usa-blue);
+    white-space: nowrap;
   }
 
   a {

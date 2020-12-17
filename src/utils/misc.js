@@ -133,7 +133,7 @@ export const scrollTo = (targetId, collapsibleId) => {
 window.scrollsmooth = scrollTo;
 
 // calculate average polarization using weights
-export const averagePolarization = (polarization) => {
+export const calculateAveragePolarization = (polarization) => {
   const weightedEngagement = Object.keys(polarization).map((id) => {
     const weight = categories.find((c) => c.id === id).weight;
     return(weight * polarization[id]);

@@ -179,7 +179,7 @@
           {/if}
         </div>
         <div class="smi">
-          <h3>Attribution impact</h3>
+          <h3>Attribution Impact</h3>
           {#if ($tooltip.tp.smiPending)}
             <p>pending</p>
           {:else}
@@ -260,7 +260,7 @@
           </ul>
         </div>
         <div class="source-category">
-          <h3>Source categor{$tooltip.tp.sourceCategory.length !== 1 ? 'ies' : 'y'}</h3>
+          <h3>Source Categor{$tooltip.tp.sourceCategory.length !== 1 ? 'ies' : 'y'}</h3>
           <ul>
             {#each $tooltip.tp.sourceCategory as cat (cat)}
               <li class="card" on:click|self={() => handleLiClick('sourceCategory', cat)}>{@html highlight(cat)}</li>

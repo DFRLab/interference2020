@@ -96,14 +96,15 @@
     </div>
     <div class="checkbox-panel">
       <CheckboxPanel />
+      <Share />
     </div>
-    <Share />
+    <!-- <Share /> -->
   </div>
 {/if}
 
 <style>
   .controls-inner-wrapper {
-    padding: 0.2rem;
+    padding: 0 0.2rem;
     border: none;
     border-radius: 3px;
     background-color: var(--transparentbg);
@@ -163,5 +164,10 @@
     color: var(--bg);
     background-color: var(--usa-blue);
     cursor: pointer;
+  }
+
+  .checkbox-panel {
+    display: flex;
+    align-items: center;
   }
 </style>

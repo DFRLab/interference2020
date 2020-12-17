@@ -64,6 +64,9 @@ export const tagFilter = createInclusiveFilter();
 export const attributionScoreFilter = createRangeFilter();
 export const attributionScoreDef = [0, 18];
 
+export const polarizationFilter = createRangeFilter();
+export const polarizationDef = [-2, 2];
+
 export const unselectAllFilters = (disinformantNation = true) => {
   if (disinformantNation) disinformantNationFilter.unselectAll();
   platformFilter.unselectAll();
@@ -72,6 +75,7 @@ export const unselectAllFilters = (disinformantNation = true) => {
   sourceCategoryFilter.unselectAll();
   tagFilter.unselectAll();
   attributionScoreFilter.set(attributionScoreDef);
+  polarizationFilter.set(polarizationDef);
 };
 
 export const selectAllFilters = (disinformantNation = true) => {
@@ -82,6 +86,7 @@ export const selectAllFilters = (disinformantNation = true) => {
   sourceCategoryFilter.selectAll();
   tagFilter.selectAll();
   attributionScoreFilter.set(attributionScoreDef);
+  polarizationFilter.set(polarizationDef);
   textSearchFilter.reset();
   caseIdFilter.set(undefined);
 };

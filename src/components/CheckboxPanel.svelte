@@ -1,8 +1,14 @@
 <script>
-  import { highlightPolarization, highlightCib } from '../stores/filters';
+  import {
+    highlightPolarization,
+    highlightCib,
+    polarizationFilter,
+    polarizationDef } from '../stores/filters';
+  import { polarizationScale } from '../stores/scales';
   import { copytooltipable } from '../actions/copytooltipable';
 
   import Checkbox from './Checkbox.svelte';
+  import Slider from './Slider.svelte';
 
   function handleClick(type) {
     switch (type) {
@@ -26,6 +32,19 @@
       </span>
     </Checkbox>
   </li>
+  <li class="polarization-slider" class:hide={!$highlightPolarization}>
+    <Slider value={$polarizationFilter}
+            lockInMode={false}
+            showLabel={false}
+            min={polarizationDef[0]} 
+            max={polarizationDef[1]}
+            showHandleLabels={false}
+            barOpacity={0.7}
+            startColor={$polarizationScale(polarizationDef[0])}
+            stopColor={$polarizationScale(polarizationDef[1])}
+            showBorder={false}
+            on:changed={(e) => $polarizationFilter = e.detail} />
+  </li>
   <!-- <li>
     <Checkbox id="checkboxpanel-checkbox-cib"
               checked={$highlightCib}
@@ -39,22 +58,28 @@
   ul {
     display: flex;
     align-items: center;
-    justify-content: center;
     width: 100%;
-    margin: 0.5rem 0;
+    margin: 0.1rem 0 0.1rem -0.2rem;
     list-style-type: none;
   }
 
   li {
-    padding: 0.4rem 0;
     position: relative;
+  }
+
+  li.polarization-slider {
+    margin-bottom: 0.05rem;
   }
 
   span {
     display: inline-block;
-    margin: 0.15rem 0 0 0.5rem;
+    margin: 2% 0 0 0.5rem;
     font-family: var(--font-02);
     font-size: 0.8rem;
     color: var(--usa-blue);
+  }
+
+  .hide {
+    visibility: hidden;
   }
 </style>
