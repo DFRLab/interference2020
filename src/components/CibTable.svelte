@@ -48,7 +48,7 @@
   </table>
   <div class="budget-and-events">
     {#if (data.budgetTotalUsd && data.budgetTotalUsd > 0)}
-      <p>The Facebook activities required a budget of <strong>USD {commaFormat(data.budgetTotalUsd)}</strong>.</p>
+      <p>Facebook advertising expenditures: <strong>$ {commaFormat(data.budgetTotalUsd)}</strong>.</p>
     {/if}
   </div>
 </div>

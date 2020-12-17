@@ -211,7 +211,7 @@
         </div>
         {#if ($tooltip.tp.cib.hasCib)}
           <div class="cib">
-            <h3>Removed content</h3>
+            <h3>Removed Content</h3>
             <CibTable data={$tooltip.tp.cib} />
           </div>
         {/if}
