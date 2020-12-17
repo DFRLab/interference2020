@@ -30,6 +30,7 @@
         break;
       case 1:
         sourceFilter.selectOne('Facebook');
+        $highlightCib = true;
         break;
       case 2:
         $attributionScoreFilter = [$attributionScoreFilter[0], 6];
@@ -87,7 +88,7 @@
     </p>
     <ul class="filter-list">
       <li on:click|self={() => handleApplyFilter(0)}>China-Related Allegations as Compared to U.S. COVID-19 Cases</li>
-      <li on:click|self={() => handleApplyFilter(1)}>All Foreign Interference Allegations Made by Facebook</li>
+      <li on:click|self={() => handleApplyFilter(1)}>All Foreign Interference Allegations Made by Facebook with CIB Data</li>
       <li on:click|self={() => handleApplyFilter(2)}>All Foreign Interference Allegations That Lack Significant Evidence</li>
     </ul>
     <!-- <p>

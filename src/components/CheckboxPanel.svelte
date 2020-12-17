@@ -24,13 +24,13 @@
       <span use:copytooltipable={{content: 'The political leanings of 600+ media entities – using political data from the AllSides Media Bias Ratings – was applied to the web links found in Attribution Impact. Since not all web links had matching AllSides data, the polarization data filter shows only cases where there were ten or more AllSides-matching articles and/or cases where 25 percent or more of articles matched with AllSides data. The stem lines on the polarization data filter are colored based on the mean political polarization of that case.', showClickMessage: false}}>Polarization data filter</span>
     </Checkbox>
   </li>
-  <li>
+  <!-- <li>
     <Checkbox id="checkboxpanel-checkbox-cib"
               checked={$highlightCib}
               on:click={() => handleClick('cib')}>
       <span use:copytooltipable={{content: 'Some content', showClickMessage: false}}>CIB data filter</span>
     </Checkbox>
-  </li>
+  </li> -->
 </ul>
 
 <style>
