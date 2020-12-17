@@ -22,6 +22,7 @@
   import ScoreQuestions from './ScoreQuestions.svelte';
   import ImpactStrip from './ImpactStrip.svelte';
   import PolarizationLegend from './PolarizationLegend.svelte';
+  import CibTable from './CibTable.svelte';
   import Share from './Share.svelte';
 
   const offset = {
@@ -207,6 +208,12 @@
           <h3>Description</h3>
           <p>{@html highlight($tooltip.tp.shortDescription)}</p>
         </div>
+        {#if ($tooltip.tp.cib.hasCib)}
+          <div class="cib">
+            <h3>Removed content</h3>
+            <CibTable data={$tooltip.tp.cib} />
+          </div>
+        {/if}
         {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
           <div class="tags">
             <h3>Tags</h3>

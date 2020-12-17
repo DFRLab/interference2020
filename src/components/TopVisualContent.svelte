@@ -5,7 +5,9 @@
     contextData,
     sourceFilter,
     attributionScoreFilter,
-    selectAllFilters } from '../stores/filters';
+    selectAllFilters,
+    highlightPolarization,
+    highlightCib } from '../stores/filters';
   import { format, timeFormat } from 'd3';
   import { drawWrapper } from '../stores/elements';
   import { copytooltipable } from '../actions/copytooltipable';
@@ -19,6 +21,8 @@
   function handleApplyFilter(id) {
     selectAllFilters();
     contextData.unselectAll();
+    $highlightPolarization = false;
+    $highlightCib = false;
     switch (id) {
       case 0:
         disinformantNationFilter.selectOne('China');

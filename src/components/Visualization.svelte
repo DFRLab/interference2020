@@ -153,7 +153,6 @@
   $: setScales(data, $width, $minDim, $maxDim, $panelHeight, $margin);
 
   $: if (data) {
-    console.log(data.filter((d) => d.cib.hasCib));
     // calculate scaled data points
     const scaledData = data.map((d) => ({
       ...d,
