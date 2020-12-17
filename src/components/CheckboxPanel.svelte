@@ -1,5 +1,5 @@
 <script>
-  import { highlightPolarization } from '../stores/filters';
+  import { highlightPolarization, highlightCib } from '../stores/filters';
 
   import Checkbox from './Checkbox.svelte';
 
@@ -7,6 +7,9 @@
     switch (type) {
       case 'polarization':
         $highlightPolarization = !$highlightPolarization;
+        break;
+      case 'cib':
+        $highlightCib = !$highlightCib;
         break;
     }
   }
@@ -18,6 +21,13 @@
               checked={$highlightPolarization}
               on:click={() => handleClick('polarization')}>
       <span>Polarization data filter</span>
+    </Checkbox>
+  </li>
+  <li>
+    <Checkbox id="checkboxpanel-checkbox-cib"
+              checked={$highlightCib}
+              on:click={() => handleClick('cib')}>
+      <span>CIB data filter</span>
     </Checkbox>
   </li>
 </ul>

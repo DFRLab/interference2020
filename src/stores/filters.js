@@ -96,3 +96,5 @@ export const originalTimeDomain = writable(null);
 export const caseIdFilter = writable();
 
 export const highlightPolarization = writable(false);
+
+export const highlightCib = writable(false);

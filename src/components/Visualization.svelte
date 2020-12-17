@@ -37,13 +37,15 @@
     contextData,
     caseIdFilter,
     tagFilter,
-    highlightPolarization } from '../stores/filters';
+    highlightPolarization,
+    highlightCib } from '../stores/filters';
   import {
     haveOverlap,
     withinRange,
     includesTextSearch,
     isCaseId,
     showPolarization,
+    showCib,
     preloadImages } from '../utils/misc';
   import { selected } from '../stores/eventSelections';
   import { drawWrapper } from '../stores/elements';
@@ -143,6 +145,7 @@
       $textSearchFilter = urlFilters.textSearch;
       $caseIdFilter = urlFilters.caseId;
       $highlightPolarization = urlFilters.highlightPolarization;
+      $highlightCib = urlFilters.highlightCib;
     } 
   });
 
@@ -150,6 +153,7 @@
   $: setScales(data, $width, $minDim, $maxDim, $panelHeight, $margin);
 
   $: if (data) {
+    console.log(data.filter((d) => d.cib.hasCib));
     // calculate scaled data points
     const scaledData = data.map((d) => ({
       ...d,
@@ -214,6 +218,7 @@
               && withinRange($attributionScoreFilter, d.attributionScore)
               && isCaseId($caseIdFilter, d.id)
               && showPolarization($highlightPolarization, d.polarization)
+              && showCib($highlightCib, d.cib)
       }));
     }
 </script>

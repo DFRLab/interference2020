@@ -12,7 +12,8 @@
     selectAllFilters,
     contextData,
     originalTimeDomain,
-    highlightPolarization } from '../stores/filters';
+    highlightPolarization,
+    highlightCib } from '../stores/filters';
   import { timeScale, attributionScoreScale } from '../stores/scales';
 
   import Dropdown from './Dropdown.svelte';
@@ -35,6 +36,7 @@
     selectAllFilters();
     contextData.unselectAll();
     $highlightPolarization = false;
+    $highlightCib = false;
     if ($originalTimeDomain) {
       $timeScale.domain($originalTimeDomain);
       $timeScale = $timeScale;

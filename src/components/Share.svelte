@@ -11,7 +11,8 @@
     textSearchFilter,
     originalTimeDomain,
     contextData,
-    highlightPolarization } from '../stores/filters';
+    highlightPolarization,
+    highlightCib } from '../stores/filters';
   import { urlFromFilters } from '../utils/share';
 
   import Icon from 'svelte-awesome';
@@ -39,7 +40,8 @@
             $textSearchFilter,
             $contextData,
             caseId,
-            $highlightPolarization);
+            $highlightPolarization,
+            $highlightCib);
 </script>
 
 <div class="share">

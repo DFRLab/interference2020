@@ -60,6 +60,12 @@ export const showPolarization = (filter, polarization) => {
   return(polarization.fulfills10Articles || polarization.fulfills25Percent);
 };
 
+// check, if cib data can be shown
+export const showCib = (filter, cib) => {
+  if (!filter) return(true);
+  return(cib.hasCib);
+};
+
 // extract filter items from data
 export const extractFilterCategories = (data, name) =>
   uniq(data.map((d) => d[name]).flat());

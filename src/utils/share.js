@@ -11,13 +11,14 @@ export const urlFromFilters = (disinformantNations,
                                textSearch,
                                contextData,
                                caseId = '',
-                               highlightPolarization) => {
+                               highlightPolarization,
+                               highlightCib) => {
   const params = {
     ts: encodeURIComponent(textSearch),
     as: [attributionScores[0], attributionScores[1]].join(';'),
     f: filtersToHex([disinformantNations, platforms, methods, sources, sourceCategories, tags, contextData]),
     id: caseId,
-    bool: filtersToBin([highlightPolarization])
+    bool: filtersToBin([highlightPolarization, highlightCib])
   };
 
   return `${baseUrl}/#${params.f}-${params.id}-${params.ts}-${params.as}-${params.bool}`;
@@ -56,6 +57,7 @@ export const parseUrl = (hash) => {
     caseId: caseId === '' ? undefined : +caseId,
     textSearch: decodeURIComponent(textSearch),
     attributionScores: attributionScores.split(';').map((d) => +d),
-    highlightPolarization: boolArray[0]
+    highlightPolarization: boolArray[0],
+    highlightCib: boolArray[1]
   };
 }; 
