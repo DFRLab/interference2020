@@ -6,11 +6,13 @@
   import { growDuration, bloomDuration, jitterFactor } from '../transitions/constants';
   import { curvyDoubleLine } from '../utils/paths';
   import { createTweenedPos } from '../transitions/tween';
+  import { usaBlue } from '../utils/colors';
 
   export let source;
   export let selected = 'unselected';
   export let hovered = 'unselected';
   export let extraFaint = false;
+  export let showPolarizationColor = false;
 
   const tweenedPos = createTweenedPos();
 
@@ -45,6 +47,7 @@
                              $tweenedPos.fy + source.rSmiTot - 5,
                              source.shift,
                              $mapHeight / 15)}
+          stroke={showPolarizationColor ? source.polarizationColor : usaBlue}
           stroke-width={$minDim / 200}
           in:draw|local={{duration: growDuration, delay: source.id * jitterFactor, easing: linear}}
           out:draw|local={{duration: growDuration, delay: bloomDuration + source.id * jitterFactor, easing: linear}}></path>
@@ -53,7 +56,6 @@
 
 <style>
   path {
-    stroke: var(--usa-blue);
     fill: none;
   }
 

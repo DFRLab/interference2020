@@ -4,7 +4,7 @@
   import { width, panelHeight, controlsHeight } from '../stores/dimensions';
   import { tooltip } from '../stores/eventSelections';
   import { fade, slide } from 'svelte/transition';
-  import { timeFormat, format } from 'd3';
+  import { timeFormat } from 'd3';
   import { extractHostname } from '../utils/misc';
   import {
     platformFilter,
@@ -13,6 +13,7 @@
     sourceCategoryFilter,
     tagFilter,
     textSearchFilter,
+    highlightPolarization,
     selectAllFilters} from '../stores/filters';
   import { maxScores } from '../inputs/scores';
   import { images } from '../inputs/dataPaths';
@@ -20,6 +21,9 @@
   import EventTooltipCross from './EventTooltipCross.svelte';
   import ScoreBar from './ScoreBar.svelte';
   import ScoreQuestions from './ScoreQuestions.svelte';
+  import ImpactStrip from './ImpactStrip.svelte';
+  import PolarizationLegend from './PolarizationLegend.svelte';
+  import CibTable from './CibTable.svelte';
   import Share from './Share.svelte';
 
   const offset = {
@@ -32,7 +36,6 @@
 
   const attributionTf = timeFormat('%B %d, %Y');
   const activityTf = timeFormat('%B %Y');
-  const commaFormat = format(',');
 
   let elem;
   let tWidth, tHeight;
@@ -176,24 +179,24 @@
           {/if}
         </div>
         <div class="smi">
-          <h3>Attribution impact</h3>
+          <h3>Attribution Impact</h3>
           {#if ($tooltip.tp.smiPending)}
             <p>pending</p>
           {:else}
             <ul>
-              <li>
-                <span class="smi-score facebook">{commaFormat($tooltip.tp.smiFacebook)}</span>
-                <span class="smi-label">Facebook</span>
-              </li>
-              <li>
-                <span class="smi-score twitter">{commaFormat($tooltip.tp.smiTwitter)}</span>
-                <span class="smi-label">Twitter</span>
-              </li>
-              <li>
-                <span class="smi-score reddit">{commaFormat($tooltip.tp.smiReddit)}</span>
-                <span class="smi-label">Reddit</span>
-              </li>
+              <ImpactStrip value={$tooltip.tp.smiFacebook}
+                           polarization={$highlightPolarization ? $tooltip.tp.polarization : null}
+                           label="Facebook" />
+              <ImpactStrip value={$tooltip.tp.smiTwitter}
+                           polarization={$highlightPolarization ? $tooltip.tp.polarization : null}
+                           label="Twitter" />
+              <ImpactStrip value={$tooltip.tp.smiReddit}
+                           polarization={$highlightPolarization ? $tooltip.tp.polarization : null}
+                           label="Reddit" />
             </ul>
+            {#if ($highlightPolarization && ($tooltip.tp.polarization.fulfills10Articles || $tooltip.tp.polarization.fulfills25Percent))}
+              <PolarizationLegend />
+            {/if}
           {/if}
         </div>
         {#if ($tooltip.tp.imageUrl)}
@@ -206,6 +209,12 @@
           <h3>Description</h3>
           <p>{@html highlight($tooltip.tp.shortDescription)}</p>
         </div>
+        {#if ($tooltip.tp.cib.hasCib)}
+          <div class="cib">
+            <h3>Removed Content</h3>
+            <CibTable data={$tooltip.tp.cib} />
+          </div>
+        {/if}
         {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
           <div class="tags">
             <h3>Tags</h3>
@@ -251,7 +260,7 @@
           </ul>
         </div>
         <div class="source-category">
-          <h3>Source categor{$tooltip.tp.sourceCategory.length !== 1 ? 'ies' : 'y'}</h3>
+          <h3>Source Categor{$tooltip.tp.sourceCategory.length !== 1 ? 'ies' : 'y'}</h3>
           <ul>
             {#each $tooltip.tp.sourceCategory as cat (cat)}
               <li class="card" on:click|self={() => handleLiClick('sourceCategory', cat)}>{@html highlight(cat)}</li>
@@ -286,6 +295,7 @@
   .content {
     display: flex;
     flex-direction: column;
+    max-width: 550px;
     max-height: 60vh;
     color: var(--text-black);
     background-color: var(--bg);
@@ -426,26 +436,6 @@
     display: flex;
   }
 
-  .smi li {
-    margin: 0.2rem 0.3rem 0.2rem 0;
-    font-size: 0.8rem;
-  }
-
-  .smi-score {
-    padding: 0 0.2rem;
-    border: none;
-    border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-                0 2px 4px rgba(0,0,0,0.07);
-  }
-
-  .smi-label {
-    display: inline-block;
-    padding: 0 0.1rem;
-    border: none;
-    border-radius: 3px;
-  }
-
   a {
     text-decoration: none;
   }
@@ -456,11 +446,6 @@
 
   .small {
     font-size: 0.6rem;
-  }
-
-  .no-break {
-    word-break: keep-all;
-    white-space: nowrap;
   }
 
   .scroll-wrapper .image {

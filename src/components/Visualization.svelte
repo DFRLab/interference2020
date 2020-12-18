@@ -22,7 +22,8 @@
     smiTotalYScale,
     smiTotalRScale,
     smiShareRScale,
-    attributionScoreScale } from '../stores/scales';
+    attributionScoreScale,
+    polarizationScale } from '../stores/scales';
   import {
     disinformantNationFilter,
     platformFilter,
@@ -35,8 +36,19 @@
     originalTimeDomain,
     contextData,
     caseIdFilter,
-    tagFilter } from '../stores/filters';
-  import { haveOverlap, withinRange, includesTextSearch, isCaseId, preloadImages } from '../utils/misc';
+    tagFilter,
+    polarizationFilter,
+    polarizationDef,
+    highlightPolarization,
+    highlightCib } from '../stores/filters';
+  import {
+    haveOverlap,
+    withinRange,
+    includesTextSearch,
+    isCaseId,
+    showPolarization,
+    showCib,
+    preloadImages } from '../utils/misc';
   import { selected } from '../stores/eventSelections';
   import { drawWrapper } from '../stores/elements';
   
@@ -50,7 +62,7 @@
     forceCenter,
     forceCollide,
     timeFormat } from 'd3';
-  import { sortConsistently } from '../utils/misc';
+  import { sortConsistently, calculateAveragePolarization } from '../utils/misc';
   import { parseUrl } from '../utils/share';
 
   import ToTop from './ToTop.svelte';
@@ -91,6 +103,7 @@
     sourceCategoryFilter.init(data, 'sourceCategory');
     tagFilter.init(data, 'tags');
     $attributionScoreFilter = attributionScoreDef;
+    $polarizationFilter = polarizationDef;
     
     // get context datasets
     $contextData = [
@@ -132,8 +145,11 @@
       tagFilter.applyBoolArray(urlFilters.tags);
       contextData.applyBoolArray(urlFilters.contextData);
       $attributionScoreFilter = urlFilters.attributionScores;
+      $polarizationFilter = urlFilters.polarization;
       $textSearchFilter = urlFilters.textSearch;
       $caseIdFilter = urlFilters.caseId;
+      $highlightPolarization = urlFilters.highlightPolarization;
+      $highlightCib = urlFilters.highlightCib;
     } 
   });
 
@@ -142,21 +158,26 @@
 
   $: if (data) {
     // calculate scaled data points
-    const scaledData = data.map((d) => ({
-      ...d,
-      _x: $timeScale(d.attributionDate),
-      _y: $smiTotalYScale.range()[0],
-      color: $attributionScoreScale(d.attributionScore),
-      rSmiTot: isNaN(d.smiTotal) || d.smiTotal === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiTotal),
-      rSmiFb: isNaN(d.smiFacebook) || d.smiFacebook === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiFacebook),
-      rSmiTw: isNaN(d.smiTwitter) || d.smiTwitter === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiTwitter),
-      rSmiRe: isNaN(d.smiReddit) || d.smiReddit === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiReddit),
-      rSmiFbShare: $smiShareRScale(d.smiFacebookShare),
-      rSmiTwShare: $smiShareRScale(d.smiTwitterShare),
-      rSmiReShare: $smiShareRScale(d.smiRedditShare),
-      fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(d.smiTotal),
-      outOfTimeRange: $timeScale(d.attributionDate) < $timeScale.range()[0] || $timeScale(d.attributionDate) > $timeScale.range()[1]
-    }))
+    const scaledData = data.map((d) => {
+      const averagePolarization = calculateAveragePolarization(d.polarization.general);
+      return {
+        ...d,
+        _x: $timeScale(d.attributionDate),
+        _y: $smiTotalYScale.range()[0],
+        color: $attributionScoreScale(d.attributionScore),
+        rSmiTot: isNaN(d.smiTotal) || d.smiTotal === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiTotal),
+        rSmiFb: isNaN(d.smiFacebook) || d.smiFacebook === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiFacebook),
+        rSmiTw: isNaN(d.smiTwitter) || d.smiTwitter === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiTwitter),
+        rSmiRe: isNaN(d.smiReddit) || d.smiReddit === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiReddit),
+        rSmiFbShare: $smiShareRScale(d.smiFacebookShare),
+        rSmiTwShare: $smiShareRScale(d.smiTwitterShare),
+        rSmiReShare: $smiShareRScale(d.smiRedditShare),
+        fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(d.smiTotal),
+        outOfTimeRange: $timeScale(d.attributionDate) < $timeScale.range()[0] || $timeScale(d.attributionDate) > $timeScale.range()[1],
+        averagePolarization,
+        polarizationColor: $polarizationScale(averagePolarization)
+      };
+    })
     .sort((a, b) => sortConsistently(a, b, 'rSmiTot', 'id'));
 
     // for some rason these definitions need to be in here and not in a gobal scope or module
@@ -202,7 +223,10 @@
               && haveOverlap($tagFilter, d.tags)
               && includesTextSearch($textSearchFilter, d.search)
               && withinRange($attributionScoreFilter, d.attributionScore)
+              && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization)
               && isCaseId($caseIdFilter, d.id)
+              && showPolarization($highlightPolarization, d.polarization)
+              && showCib($highlightCib, d.cib)
       }));
     }
 </script>

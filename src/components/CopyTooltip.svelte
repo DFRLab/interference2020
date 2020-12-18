@@ -6,6 +6,7 @@
   export let content = '';
   export let x = 0;
   export let y = 0;
+  export let showClickMessage = true;
 
   const maxWidth = 300;
   const margin = 10;
@@ -33,7 +34,9 @@
   <div class="content">
     <h2>{title}</h2>
     <p>{content}</p>
-    <p class="footer">Click to read more.</p>
+    {#if (showClickMessage)}
+      <p class="footer">Click to read more.</p>
+    {/if}
   </div>
 </div>
 

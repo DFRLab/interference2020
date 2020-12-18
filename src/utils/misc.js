@@ -1,6 +1,7 @@
 import { uniq } from 'lodash';
 import { mean, min, max } from 'd3';
 import { images } from '../inputs/dataPaths';
+import { categories } from '../inputs/polarization';
 
 // extract attribution date range from data
 export const getTimeRange = (data) => {
@@ -39,7 +40,7 @@ export const haveOverlap = (filter, arr) =>
   filter.filter((d) => d.selected).map((d) => d.id).some((item) => arr.includes(item));
 
 // check, if a number is within a 2D range (given as array with length 2)
-export const withinRange = (arr, num) => num >= arr[0] && num <= arr[1];
+export const withinRange = (arr, num, bypass = false) => bypass ? true : (num >= arr[0] && num <= arr[1]);
 
 // check, if a search string (filter) is included in a string
 export const includesTextSearch = (filter, s) => {
@@ -52,6 +53,18 @@ export const includesTextSearch = (filter, s) => {
 
 // check if case id filter is set and if id is matching
 export const isCaseId = (filter, id) => filter === undefined ? true : (filter === id);
+
+// check, if polarization data can be shown
+export const showPolarization = (filter, polarization) => {
+  if (!filter) return(true);
+  return(polarization.fulfills10Articles || polarization.fulfills25Percent);
+};
+
+// check, if cib data can be shown
+export const showCib = (filter, cib) => {
+  if (!filter) return(true);
+  return(cib.hasCib);
+};
 
 // extract filter items from data
 export const extractFilterCategories = (data, name) =>
@@ -118,3 +131,16 @@ export const scrollTo = (targetId, collapsibleId) => {
   return(false);
 };
 window.scrollsmooth = scrollTo;
+
+// calculate average polarization using weights
+export const calculateAveragePolarization = (polarization) => {
+  const weightedEngagement = Object.keys(polarization).map((id) => {
+    const weight = categories.find((c) => c.id === id).weight;
+    return(weight * polarization[id]);
+  })
+  .reduce((acc, cur) => acc + cur);
+
+  const totalEngagement = Object.keys(polarization).map((id) => polarization[id]).reduce((acc, cur) => acc + cur);
+
+  return(weightedEngagement / totalEngagement);
+};

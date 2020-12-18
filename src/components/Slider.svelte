@@ -4,13 +4,17 @@
   import { scaleLinear } from 'd3';
   import { slidable } from '../actions/slidable';
 
+  export let lockInMode = true;
   export let label = '';
+  export let showLabel = true;
   export let min = 0;
   export let max = 10;
   export let value = [0, 10];
   export let showHandleLabels = true;
   export let startColor = 'white';
   export let stopColor = 'red';
+  export let barOpacity = 1;
+  export let showBorder = true;
 
   const dispatch = createEventDispatcher();
   const handleWidth = 17;
@@ -35,8 +39,12 @@
   }
 
   function handleSlideEnd(e, side) {
-    dispatch('changed', [Math.round(scale.invert(pos.left), 0),
+    if (lockInMode) {
+      dispatch('changed', [Math.round(scale.invert(pos.left), 0),
                          Math.round(scale.invert(pos.right), 0)]);
+    } else {
+      dispatch('changed', [scale.invert(pos.left), scale.invert(pos.right)]);
+    }
   }
 
   $: scale = scaleLinear()
@@ -50,17 +58,20 @@
 <div class="slider"
      bind:clientWidth={sliderWidth}
      style="--handle-width: {handleWidth}px;">
-  <div class="label">
-    {label}
-  </div>
-  <div class="slider-body">
+  {#if (showLabel)}
+    <div class="label">
+      {label}
+    </div>
+  {/if}
+  <div class="slider-body" class:border={showBorder}>
     <div class="slider-selected-range"
-         style="width: {sliderWidth - 3 * handleWidth}px;
-                margin-left: {1.5 * handleWidth}px;
+         style="width: {sliderWidth - 2 * handleWidth}px;
+                margin-left: {1 * handleWidth}px;
+                opacity: {barOpacity};
                 background: linear-gradient(90deg, {startColor}, {stopColor});"></div>
     <div class="slider-handle"
          class:no-label={!showHandleLabels}
-         style="left: {(value[0] === value[1]) ? pos.left - 5 : pos.left}px;"
+         style="left: {(Math.abs(value[0] - value[1]) < 0.1) ? pos.left - 5 : pos.left}px;"
          use:slidable
          on:slide={(e) => handleSlide(e, 'left')}
          on:slideend={(e) => handleSlideEnd(e, 'left')}>
@@ -68,7 +79,7 @@
     </div>
     <div class="slider-handle"
          class:no-label={!showHandleLabels}
-         style="left: {(value[0] === value[1]) ? pos.right + 5 : pos.right}px;"
+         style="left: {(Math.abs(value[0] - value[1]) < 0.1) ? pos.right + 5 : pos.right}px;"
          use:slidable
          on:slide={(e) => handleSlide(e, 'right')}
          on:slideend={(e) => handleSlideEnd(e, 'right')}>
@@ -103,9 +114,13 @@
     padding: 0.1rem 0;
     font-size: 0.7rem;
     background-color: var(--bg);
+    border: none;
+    position: relative;
+  }
+
+  .border {
     border: 2px solid var(--usa-blue);
     border-radius: 3px;
-    position: relative;
   }
 
   .slider-selected-range {

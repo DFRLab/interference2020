@@ -17,7 +17,7 @@
         dy="4">
     Attribution Impact
   </text>
-  <g class="total-r-scale" transform="translate(0 {-4.5 * $smiTotalRScale(rTicks.slice(-1)[0])})">
+  <g class="total-r-scale" transform="translate(0 {-2 * $smiTotalRScale(rTicks.slice(-1)[0])})">
     {#each rTicks as tick, i}
       <line x1="0"
             y1={$smiTotalRScale(rTicks[0]) - 2 * $smiTotalRScale(tick)}
@@ -32,7 +32,7 @@
               r={$smiTotalRScale(tick)}></circle>
     {/each}
   </g>
-  <g class="smi-pending">
+  <!-- <g class="smi-pending">
     <line x1="0"
           y1={-$smiTotalRScale(rTicks.slice(-1)[0])}
           x2={$smiTotalRScale(rTicks[0]) + 15}
@@ -44,7 +44,7 @@
     <circle cx="0"
             cy="0"
             r={$smiTotalRScale(rTicks.slice(-1)[0])}></circle>
-  </g>
+  </g> -->
 </g>
 
 <style>

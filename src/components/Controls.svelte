@@ -11,12 +11,15 @@
     textSearchFilter,
     selectAllFilters,
     contextData,
-    originalTimeDomain } from '../stores/filters';
+    originalTimeDomain,
+    highlightPolarization,
+    highlightCib } from '../stores/filters';
   import { timeScale, attributionScoreScale } from '../stores/scales';
 
   import Dropdown from './Dropdown.svelte';
   import Slider from './Slider.svelte';
   import SearchText from './SearchText.svelte';
+  import CheckboxPanel from './CheckboxPanel.svelte';
   import Share from './Share.svelte';
 
   export let timePoints;
@@ -32,6 +35,8 @@
   function handleButtonClick() {
     selectAllFilters();
     contextData.unselectAll();
+    $highlightPolarization = false;
+    $highlightCib = false;
     if ($originalTimeDomain) {
       $timeScale.domain($originalTimeDomain);
       $timeScale = $timeScale;
@@ -89,13 +94,17 @@
         Reset
       </button>
     </div>
-    <Share />
+    <div class="checkbox-panel">
+      <CheckboxPanel />
+      <Share />
+    </div>
+    <!-- <Share /> -->
   </div>
 {/if}
 
 <style>
   .controls-inner-wrapper {
-    padding: 0.2rem;
+    padding: 0 0.2rem;
     border: none;
     border-radius: 3px;
     background-color: var(--transparentbg);
@@ -155,5 +164,10 @@
     color: var(--bg);
     background-color: var(--usa-blue);
     cursor: pointer;
+  }
+
+  .checkbox-panel {
+    display: flex;
+    align-items: center;
   }
 </style>
