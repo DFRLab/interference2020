@@ -57,21 +57,27 @@
   .cib-table-wrapper {
     display: flex;
     width: 100%;
+    margin-top: 0.3rem;
   }
 
   table {
     flex: 1;
     font-size: 0.8rem;
     color: var(--text-black);
+    border-collapse: collapse;
   }
 
   thead {
     font-size: 0.7rem;
   }
 
+  thead td {
+    border-bottom: 1px solid gray;
+  }
+
   td {
     min-width: 30px;
-    padding: 0 0.2rem;
+    padding: 0.1rem 0.2rem;
     vertical-align: middle;
   }
 
