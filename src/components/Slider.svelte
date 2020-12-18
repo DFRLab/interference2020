@@ -12,6 +12,7 @@
   export let value = [0, 10];
   export let showHandleLabels = true;
   export let startColor = 'white';
+  export let middleColor = null;
   export let stopColor = 'red';
   export let barOpacity = 1;
   export let showBorder = true;
@@ -53,6 +54,8 @@
 
   $: pos.left = scale(value[0]) || 0;
   $: pos.right = scale(value[1]) || 0;
+
+  $: background = `linear-gradient(90deg, ${startColor}, ${middleColor ? middleColor + ', ' : ''}${stopColor})`;
 </script>
 
 <div class="slider"
@@ -68,7 +71,7 @@
          style="width: {sliderWidth - 2 * handleWidth}px;
                 margin-left: {1 * handleWidth}px;
                 opacity: {barOpacity};
-                background: linear-gradient(90deg, {startColor}, {stopColor});"></div>
+                background: {background};"></div>
     <div class="slider-handle"
          class:no-label={!showHandleLabels}
          style="left: {(Math.abs(value[0] - value[1]) < 0.1) ? pos.left - 5 : pos.left}px;"

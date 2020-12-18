@@ -41,6 +41,7 @@
             showHandleLabels={false}
             barOpacity={0.7}
             startColor={$polarizationScale(polarizationDef[0])}
+            middleColor={$polarizationScale(0)}
             stopColor={$polarizationScale(polarizationDef[1])}
             showBorder={false}
             on:changed={(e) => $polarizationFilter = e.detail} />
