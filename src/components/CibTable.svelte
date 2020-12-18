@@ -48,7 +48,7 @@
   </table>
   <div class="budget-and-events">
     {#if (data.budgetTotalUsd && data.budgetTotalUsd > 0)}
-      <p>Facebook advertising expenditures: <strong>$ {commaFormat(data.budgetTotalUsd)}</strong>.</p>
+      <p>Facebook advertising expenditures: $ {commaFormat(data.budgetTotalUsd)}.</p>
     {/if}
   </div>
 </div>
@@ -62,6 +62,7 @@
 
   table {
     flex: 1;
+    max-width: 60%;
     font-size: 0.8rem;
     color: var(--text-black);
     border-collapse: collapse;
